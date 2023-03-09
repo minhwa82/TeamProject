@@ -1,4 +1,4 @@
-package movie.movie.action;
+package movie.seat.action;
 
 import java.io.IOException;
 
@@ -9,9 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("*.mv")
-public class MovieFrontController extends HttpServlet{
+@WebServlet("*.st")
+public class SeatFrontController extends HttpServlet{
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(" C : doProcess 호출 ! ");
 		
@@ -32,34 +31,18 @@ public class MovieFrontController extends HttpServlet{
 	Action action = null;
 	ActionForward forward = null;
 	
-	if(command.equals("/main.mv")) {
-		System.out.println(" /main.mv 호출 ");
+	
+	if(command.equals("/seatChoice.st")) {
+		System.out.println(" C : /seatChoice.st 호출 ");
 		
 		forward = new ActionForward();
-		forward.setPath("./movie/main.jsp");
+		forward.setPath("./seat/seat.jsp");
 		forward.setRedirect(false);
-		
-	}
-	
-	else if(command.equals("/movieDetail.mv")) {
-		System.out.println(" /movieDetail.mv 호출 ");
-		
-		action = new MovieDetailAction();
-		
-		try {
-			forward = action.execute(request, response);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
-		
 	}
-	
-	else if(command.equals("/movieList.mv")) {
-		System.out.println(" /movieList.mv 호출 ");
-		
-		action = new MovieListAction();
+	else if(command.equals("/insertSeat.st")) {
+		System.out.println(" C : /insertSeat.st 호출 ");
+		action = new InsertSeatAction();
 		
 		try {
 			forward = action.execute(request, response);
@@ -67,48 +50,6 @@ public class MovieFrontController extends HttpServlet{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-	}
-	else if(command.equals("/saveDB.mv")) {
-		System.out.println(" /saveDB.mv 호출 ");
-		
-		forward = new ActionForward();
-		
-		forward.setPath("./movie/dbSave.jsp");
-		forward.setRedirect(false);
-		
-	}
-	
-	
-	else if(command.equals("/saveDBProAction.mv")) {
-		System.out.println(" /saveDBProAction.mv 호출 ");
-		
-		action = new SaveDBProAction();
-		
-		try {
-			forward = action.execute(request, response);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-	
-	else if(command.equals("/movieReview.mv")) {
-		System.out.println(" /movieReview.mv 호출 ");
-		
-		action = new movieReviewAction();
-		
-		try {
-			forward = action.execute(request, response);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
 		
 	}
 	
