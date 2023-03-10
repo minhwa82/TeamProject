@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import movie.seat.db.SeatDAO;
+import movie.seat.db.SeatDTO;
 
 public class SeatChoiceAction implements Action {
 
@@ -17,20 +18,29 @@ public class SeatChoiceAction implements Action {
 		String M_num = request.getParameter("M_num");
 		String M_name = request.getParameter("M_mame");
 		
-		// 스크린번호, 시작시간, 상영날짜 받아야함
+		// T_num, Sc_num 받기
 		// 받기전 임시
 		
-		String startTime = "09:00:00";
-		String Sc_num = "02_1";
-		String date = "2023-03-09";
+		String T_num = "1";
+		String SC_num = "02_1";
 		
 		SeatDAO dao = new SeatDAO();
-		List SList = dao.getSeatStatus(M_num, startTime, Sc_num, date);
+		SeatDTO dto = new SeatDTO();
 		
-		request.setAttribute("SList", dao);
+		List SList = dao.getSeatStatus(SC_num, T_num);
+		
+		System.out.println(SList);
+		request.setAttribute("SList", SList);
+		
+		// JSOnLISt
 		
 		
-		return null;
+		ActionForward forward = new ActionForward();
+		forward.setPath("./seat/seat.jsp");
+		forward.setRedirect(false);
+		
+		
+		return forward;
 	}
 
 }

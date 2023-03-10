@@ -42,15 +42,16 @@ public class SeatDAO {
 		}
 	}
 	
-	public void insertSeat(String S_num, String Sc_num) {
+	public void insertSeat(String S_num, String Sc_num, String T_num) {
 		
 		try {
 			con = getCon();
-			sql = "insert into seat values(?,?,0)";
+			sql = "insert into seat values(?,?,0,?)";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, S_num);
 			pstmt.setString(2, Sc_num);
+			pstmt.setString(3, T_num);
 			
 			pstmt.executeUpdate();
 			
@@ -65,27 +66,26 @@ public class SeatDAO {
 	}
 	
 	
-	public List getSeatStatus(String M_num, String startTime, String Sc_num, String date) {
+	public List getSeatStatus(String Sc_num, String T_num) {
 		List SList = new ArrayList<>();
 		SeatDTO dto = null;
 		
 		try {
 			con = getCon();
-			sql = "select S_num, S_choice from seat where M_num=? and startTime=? and Sc_num=? and date=? ";
+			sql = "select S_num, S_choice from seat where Sc_num=? and T_num=? ";
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, M_num);
-			pstmt.setString(2, startTime);
-			pstmt.setString(3, Sc_num);
-			pstmt.setString(4, date);
+			pstmt.setString(1, Sc_num);
+			pstmt.setString(2, T_num);
+			
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				dto = new SeatDTO();
 				
-				dto.setS_num(rs.getString(0));
-				dto.setS_choice(rs.getInt(1));
+				dto.setS_num(rs.getString(1));
+				dto.setS_choice(rs.getInt(2));
 				
 				SList.add(dto);
 			}

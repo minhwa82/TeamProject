@@ -4,36 +4,16 @@ public class SeatDTO {
 	private String S_num;
 	private String Sc_num;
 	private int S_choice;
-	private String M_num;
-	private String startTime;
-	private String endTime;
-	private String date;
+	private String T_num;
 	
 	
 	
-	public String getM_num() {
-		return M_num;
+	
+	public String getT_num() {
+		return T_num;
 	}
-	public void setM_num(String m_num) {
-		M_num = m_num;
-	}
-	public String getStartTime() {
-		return startTime;
-	}
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
-	}
-	public String getEndTime() {
-		return endTime;
-	}
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setT_num(String t_num) {
+		T_num = t_num;
 	}
 	public String getS_num() {
 		return S_num;
@@ -53,6 +33,12 @@ public class SeatDTO {
 	public void setS_choice(int s_choice) {
 		S_choice = s_choice;
 	}
+	@Override
+	public String toString() {
+		return "SeatDTO [S_num=" + S_num + ", Sc_num=" + Sc_num + ", S_choice=" + S_choice + ", T_num=" + T_num + "]";
+	}
+	
+	
 	
 	
 

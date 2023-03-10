@@ -35,9 +35,15 @@ public class SeatFrontController extends HttpServlet{
 	if(command.equals("/seatChoice.st")) {
 		System.out.println(" C : /seatChoice.st 호출 ");
 		
-		forward = new ActionForward();
-		forward.setPath("./seat/seat.jsp");
-		forward.setRedirect(false);
+		action = new SeatChoiceAction();
+		
+		try {
+			forward = action.execute(request, response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 
 	}
 	else if(command.equals("/insertSeat.st")) {
@@ -52,7 +58,20 @@ public class SeatFrontController extends HttpServlet{
 		}
 		
 	}
-	
+	else if(command.equals("/seatBook.st")) {
+		System.out.println(" C : /seatBook.st 호출 ");
+		
+		action = new SeatBookAction();
+		
+		try {
+			forward = action.execute(request, response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 	
 	
 	

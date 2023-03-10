@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,26 +21,61 @@
 	crossorigin="anonymous"></script>
 	
 <script type="text/javascript">
-	$(document).ready(function(){
+	
 		
 		
-		$(function (){
-		    $("#a").on("click",function(){
-		        $("#a").attr("disabled",true);
-		    });
-		    $("#b").on("click",function(){
-		        alert('클릭');
-		    });
+		
+		 $(function (){
+			
+			 alert('${SList[0].s_num}');
+			 console.log('${SList}');
+			 console.log('${SList[0]}');
+			 
+			 var obj = [ 
+				   {"s_num":100,"name":"test"},
+				   {"s_num":101,"name":"test"},
+				   {"s_num":102,"name":"test"},
+				   {"s_num":103,"name":"test"}				 
+			 ];
+			/*  console.log(obj.s_num); */
+			
+			var list = '${SList}';
+			
+			for(var i=0; i<obj.length; i++){
+ 				alert(obj[i].s_num);
+				
+			}
+			
+			// JsonList로 변경
+			
+			
+			
+			for(var i=0; i<60; i++){
+			
+				$('.'+list[i]).on("click",function(){
+			        $('.'+list[i]).attr("disabled",true);
+			 	}); 
+			}
+			
+			/* $('.a1').on("click",function(){
+		        $('.a1').attr("disabled",true);
+		    }); */
+		    
+			/* for(var i=0; i<size; i++){
+				console.log(list[i]);
+				
+				$('.'+list[i]).on("click",function(){
+			        $('.'+list[i]).attr("disabled",true);
+			    });
+			} 
+				  */	
 		    
 		});
 		
-		
-		
-		
-		
-	});	
+
 
 </script>
+
 
 
 </head>
@@ -65,41 +102,21 @@
 			<h1 class="post-title">${param.M_name }</h1>
 			<h1>인원/좌석</h1>
 		</div>
-		<table border="1">
-			a
-			<c:forEach begin="1" end="12" step="1" var="i">
-				<input name="a" type="button" value="${i }" id="a" style="width:36px;">
+			
+		<form action="./seatBook.st?seat" method="get" name="book">
+			<c:forEach items="${SList }" var="SList" varStatus="status">
+				
+				<c:if test="${SList.s_choice eq 1 }">
+					<input type="button" value="${SList.s_num }" style="width:36px" class="${SList.s_num }" disabled="disabled">
+				</c:if>
+				<c:if test="${SList.s_choice eq 0 }">
+					<input type="button" value="${SList.s_num }" style="width:36px" class="${SList.s_num }" name="seat" onclick="select();">
+				</c:if>
+					
+				<c:if test="${status.index==11 || status.index==23 || status.index==35 || status.index==47 || status.index==59 }">
+					<br>
+				</c:if>
 			</c:forEach>
-			<br>
-			
-			b
-			<c:forEach begin="1" end="12" step="1" var="i">
-				<input name="b" type="button" value="${i }" id="b" style="width:36px;">
-			</c:forEach>
-			<br>
-			
-			c
-			<c:forEach begin="1" end="12" step="1" var="i">
-				<input name="c" type="button" value="${i }" id="c" style="width:36px;">
-			</c:forEach>
-			<br>
-			
-			d
-			<c:forEach begin="1" end="12" step="1" var="i">
-				<input name="d" type="button" value="${i }" id="d" style="width:36px;">
-			</c:forEach>
-			<br>
-			
-			e
-			<c:forEach begin="1" end="12" step="1" var="i">
-				<input name="e" type="button" value="${i }" id="e" style="width:36px;">
-			</c:forEach>
-			<br>
-			
-			
-			
-		
-		</table>
 		
 		성인   : 
 		<c:forEach begin="1" end="8" step="1" var="i">
@@ -111,7 +128,13 @@
 			<input type="button" value="${i }">
 		</c:forEach>
 		
-		<a href="./insertSeat.st">시트등록</a>
+		<hr>
+		
+		<input type="submit" value="예매하기">
+		
+		</form>	
+		
+		<a href="./insertSeat.st">시트등록</a> 
 		
 		
 		
