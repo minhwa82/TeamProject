@@ -42,6 +42,7 @@
 		<li class="nav-author-page" role="presentation"><a href="author.html">Author Page</a></li>
 		<span class="socialheader">
 		<a href="saveDB.mv">영화 DB저장</a>
+		<a href="timeInsert.mv">영화 상영 등록</a>
 		<a href="#"><span class='symbol'>circletwitterbird</span></a>
 		<a href="#"><span class='symbol'>circlefacebook</span></a>
 		<a href="#"><span class='symbol'>circlegoogleplus</span></a>
@@ -94,6 +95,7 @@
 				<img class="author-thumb" src="./assets/img/gravatar.jpg" alt="David" nopin="nopin"/>
 				<c:out value="${list.getM_reservationRate() }"/>%
 				<time class="post-date" datetime="2015-12-17"><c:out value="${list.getM_playDate() }"/></time><br>
+				
 				<input type="button" value="예매" onclick="location.href='./seatChoice.st?M_num=${list.getM_num() }&M_name=${list.getM_name() }'">
 				</footer>
 			</div>

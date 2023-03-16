@@ -4,15 +4,23 @@ public class SeatDTO {
 	private String S_num;
 	private String Sc_num;
 	private int S_choice;
-	private String T_num;
+	private int T_num;
+	private String M_num;
 	
 	
 	
 	
-	public String getT_num() {
+	
+	public String getM_num() {
+		return M_num;
+	}
+	public void setM_num(String m_num) {
+		M_num = m_num;
+	}
+	public int getT_num() {
 		return T_num;
 	}
-	public void setT_num(String t_num) {
+	public void setT_num(int t_num) {
 		T_num = t_num;
 	}
 	public String getS_num() {

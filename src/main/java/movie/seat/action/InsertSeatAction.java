@@ -15,14 +15,14 @@ public class InsertSeatAction implements Action {
 		
 		SeatDAO dao = new SeatDAO();
 		
-		for(int i=1; i<13; i++) {
-			
-			dao.insertSeat("a"+i, "02_1", "1");
-			dao.insertSeat("b"+i, "02_1", "1");
-			dao.insertSeat("c"+i, "02_1", "1");
-			dao.insertSeat("d"+i, "02_1", "1");
-			dao.insertSeat("e"+i, "02_1", "1");
-		}
+//		for(int i=1; i<13; i++) {
+//			
+//			dao.insertSeat("a"+i, "02_1", "1");
+//			dao.insertSeat("b"+i, "02_1", "1");
+//			dao.insertSeat("c"+i, "02_1", "1");
+//			dao.insertSeat("d"+i, "02_1", "1");
+//			dao.insertSeat("e"+i, "02_1", "1");
+//		}
 		
 		
 		response.setContentType("text/html; charset=UTF-8");

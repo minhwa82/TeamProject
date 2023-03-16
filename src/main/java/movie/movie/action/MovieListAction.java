@@ -28,9 +28,9 @@ public class MovieListAction implements Action {
 			dto = (MovieDTO)dailyList.get(i);
 			Ndto = api.getNaverAPI(dto.getM_name());
 			imgList.add(Ndto.getImg());
-			
-			
 		}
+		
+		
 
 		request.setAttribute("dailyList", dailyList);
 		request.setAttribute("imgList", imgList);

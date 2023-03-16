@@ -21,60 +21,168 @@
 	crossorigin="anonymous"></script>
 	
 <script type="text/javascript">
-	
-		
 		
 		
 		 $(function (){
-			
-			 alert('${SList[0].s_num}');
-			 console.log('${SList}');
-			 console.log('${SList[0]}');
 			 
-			 var obj = [ 
-				   {"s_num":100,"name":"test"},
-				   {"s_num":101,"name":"test"},
-				   {"s_num":102,"name":"test"},
-				   {"s_num":103,"name":"test"}				 
-			 ];
-			/*  console.log(obj.s_num); */
-			
-			var list = '${SList}';
-			
-			for(var i=0; i<obj.length; i++){
- 				alert(obj[i].s_num);
-				
-			}
-			
-			// JsonList로 변경
-			
-			
-			
-			for(var i=0; i<60; i++){
-			
-				$('.'+list[i]).on("click",function(){
-			        $('.'+list[i]).attr("disabled",true);
-			 	}); 
-			}
-			
-			/* $('.a1').on("click",function(){
-		        $('.a1').attr("disabled",true);
-		    }); */
-		    
-			/* for(var i=0; i<size; i++){
-				console.log(list[i]);
-				
-				$('.'+list[i]).on("click",function(){
-			        $('.'+list[i]).attr("disabled",true);
+			//var save = ""; 
+			 
+			/* $.each(${JList}, function(key, value){
+				$('.'+value.s_num).on('click',function(){
+					if($(this).val() == 'O' ){
+						save = $('.select').val();
+						$(this).css('background', 'blue');
+						$(this).val(value.s_num);
+						$('.select').attr('value',$('.select').val()+value.s_num);
+						alert(save);
+					}else {
+						$(this).css('background', 'white');
+						$(this).val('O');
+						alert(save);
+						$('.select').remove('value', $(this.val()));
+					}
+					
 			    });
-			} 
-				  */	
-		    
+			});	 */
+			
+			
+			var aPeople = 0;
+			var yPeople = 0;
+			var sum = 0;
+			var cnt = 0;
+			var save = 0;
+
+			$('input:button[name=adult]').on('click', function(){
+				aPeople = $(this).attr('value');
+				cnt = $('input:checkbox[id=c]:checked').length;
+				sum = parseInt(aPeople) + parseInt(yPeople);
+				
+				if(cnt>sum){
+					alert('좌석취소 후 인원 조정');
+					aPeople = save;
+					return false;
+				}
+				$('input:button[name=adult]').css('background', 'white');
+				$(this).css('background', 'blue');
+				save = $(this).attr('value');
+				$('input:text[name=aNum]').val(save);
+			}),
+				
+			$('input:button[name=youth]').on('click', function(){
+				yPeople = $(this).attr('value');
+				cnt = $('input:checkbox[id=c]:checked').length;
+				sum = parseInt(aPeople) + parseInt(yPeople);
+				
+				if(cnt>sum){
+					alert('좌석취소 후 인원 조정');
+					yPeople = save;
+					return false;
+				}
+				$('input:button[name=youth]').css('background', 'white');
+				$(this).css('background', 'blue');
+				save = $(this).attr('value');
+				$('input:text[name=yNum]').val(save);
+				
+			}),
+				
+			$('input:checkbox[id=c]').click(function(){
+				cnt = $('input:checkbox[id=c]:checked').length;
+				
+				sum = parseInt(aPeople) + parseInt(yPeople);
+				if(sum == 0){
+					alert('인원수 선택');
+					$('input:checkbox[id=c]').checked = false;
+					return false;
+				}
+					
+				if(cnt>sum){
+					alert("인원초과");
+					$('input:checkbox[id=c]').checked = false;
+					return false;
+				}
+				
+				$.ajax({
+					url:'./seat/SeatDB.jsp',
+					type:'get',
+					data:{'S_num':$(this).attr('value'),
+						  'T_num':${T_num},'Sc_num':$('input:hidden[name=Sc_num]').val() },
+					success: function(data){
+						alert('성공');
+						alert(data);
+					}
+				});
+				
+				
+			
+			});
+			
+			$('#form').submit(function(){
+				alert(cnt);
+				alert(sum);
+				if(cnt != sum){
+					alert('인원수와 선택좌석수가 다름');
+					return false;
+				}
+				
+			});
+				
+			
+
 		});
+		 
+		$(document).ready(function(){
+			
+			
+		});
+		 
+		 
+		
+		 
+			/* function check_count(obj){
+				var check = document.getElementsByName('seat');
+				var count = 0;
+				
+				var aPeople = document.getElementsByName('adult').value;
+				var yPeople = document.getElementsByName('youth').value;
+				var sPeople = aPeople + sPeople;
+				
+				alert(sPeople);
+				
+				for(var i=0; i<check.length; i++){
+					if(check[i].checked){
+						count++;
+					}
+				}
+				if(count > 3){
+					alert('dd');
+					obj.checked = false;
+				}
+			} */
+		
 		
 
 
 </script>
+
+<style>
+	#b{
+		width:25px;
+		height:25px;
+		
+	}
+
+	#c{
+		width:25px;
+		height:30px;
+		position: relative;
+        top: 9px;
+	}
+	#s{
+		color: white;
+		
+	}
+</style>
+
 
 
 
@@ -99,18 +207,22 @@
 	<header class="main-header post-head " style="background-image: url(http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/10/2015/10/10174958/fas-compressor.jpg)">
 	<div class="vertical">
 		<div class="main-header-content inner">
-			<h1 class="post-title">${param.M_name }</h1>
+			<h1 class="post-title">${M_name }</h1>
 			<h1>인원/좌석</h1>
 		</div>
+		
+		
 			
-		<form action="./seatBook.st?seat" method="get" name="book">
+		<form action="./seatBook.st" method="post" id="form">
+		<input type="hidden" value="${T_num }" name="T_num">
+		<input type="hidden" value="${Sc_num }" name="Sc_num">
 			<c:forEach items="${SList }" var="SList" varStatus="status">
 				
 				<c:if test="${SList.s_choice eq 1 }">
-					<input type="button" value="${SList.s_num }" style="width:36px" class="${SList.s_num }" disabled="disabled">
+					<input type="button" value="X" id="b" class="${SList.s_num }" disabled="disabled">
 				</c:if>
 				<c:if test="${SList.s_choice eq 0 }">
-					<input type="button" value="${SList.s_num }" style="width:36px" class="${SList.s_num }" name="seat" onclick="select();">
+					<input type="checkbox" id="c" value="${SList.s_num }" class="${SList.s_num }" name="seat">
 				</c:if>
 					
 				<c:if test="${status.index==11 || status.index==23 || status.index==35 || status.index==47 || status.index==59 }">
@@ -118,23 +230,23 @@
 				</c:if>
 			</c:forEach>
 		
-		성인   : 
-		<c:forEach begin="1" end="8" step="1" var="i">
-			<input type="button" value="${i }">
-		</c:forEach>
-		<br>
-		청소년 : 
-		<c:forEach begin="1" end="8" step="1" var="i">
-			<input type="button" value="${i }">
-		</c:forEach>
+			<span id="s">성인   : </span>
+			<c:forEach begin="1" end="8" step="1" var="i">
+				<input type="button" value="${i }" name="adult">	
+			</c:forEach>
+			<br>
+			<span id="s">청소년 : </span>
+			<c:forEach begin="1" end="8" step="1" var="i">
+				<input type="button" value="${i }" name="youth">
+			</c:forEach>
 		
-		<hr>
-		
-		<input type="submit" value="예매하기">
+			<hr>
+			<input type="text" value="" name="aNum">
+			<input type="text" value="" name="yNum">
+			<input type="submit" value="예매하기">
 		
 		</form>	
 		
-		<a href="./insertSeat.st">시트등록</a> 
 		
 		
 		
