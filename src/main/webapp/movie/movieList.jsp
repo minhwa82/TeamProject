@@ -78,10 +78,10 @@
 	
 	<!-- <div class="on"> -->
 	
-	<div class="grid">
-		<div class="grid-item">
-			<article class="post">
-			<div class="wrapgriditem">
+<!-- 	<div class="grid"> -->
+	<!-- 	<div class="grid-item"> -->
+			<article class="post" style="float:left; width: 300px; margin:10px">
+			<div class="wrapgriditem" style=" height:450px;">
 				<header class="post-header">
 				<h2 class="post-title">${list.getM_rank() }.
 				<a href="./movieDetail.mv?movieNm=${list.getM_name() }&movieSalesRate=${list.getM_reservationRate() }&movieCd=${list.getM_num() }"><c:out value="${list.getM_name() }"/></a></h2>
@@ -96,12 +96,12 @@
 				<c:out value="${list.getM_reservationRate() }"/>%
 				<time class="post-date" datetime="2015-12-17"><c:out value="${list.getM_playDate() }"/></time><br>
 				
-				<input type="button" value="예매" onclick="location.href='./seatChoice.st?M_num=${list.getM_num() }&M_name=${list.getM_name() }'">
+				<%-- <input type="button" value="예매" onclick="location.href='./seatChoice.st?M_num=${list.getM_num() }&M_name=${list.getM_name() }'"> --%>
 				</footer>
 			</div>
 			</article>
-		</div>
-	</div>
+<!-- 		</div> -->
+<!-- 	</div> -->
 	
 	
 	<!-- </div> -->
