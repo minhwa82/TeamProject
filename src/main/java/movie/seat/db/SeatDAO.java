@@ -74,7 +74,8 @@ public class SeatDAO {
 			con = getCon();
 			sql = "select S_num, S_choice, M_num from seat join time "
 					+ "on seat.T_num = time.T_num "
-					+ "where seat.Sc_num=? and seat.T_num=? and time.M_num=? ";
+					+ "where seat.Sc_num=? and seat.T_num=? and time.M_num=? "
+					+ "order by S_num";
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setString(1, Sc_num);

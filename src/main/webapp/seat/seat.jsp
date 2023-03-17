@@ -97,28 +97,65 @@
 					
 				if(cnt>sum){
 					alert("인원초과");
-					$('input:checkbox[id=c]').checked = false;
+					
 					return false;
 				}
+				let tmp = $(this);
+				if(tmp.is(':checked') == true){
+					
+					$.ajax({
+						url:'./seat/SeatDB.jsp',
+						type:'get',
+						data:{'S_num':$(this).attr('value'),
+							  'T_num':${T_num},'Sc_num':$('input:hidden[name=Sc_num]').val(),
+							  'M_num':$('input:hidden[name=M_num]').val()
+							  },
+						dataType:'json',
+						success: function(data){
+							if(data.alt == "예매중인 좌석"){
+								alert('예매중인 좌석');
+								tmp.attr("checked",false);
+							}
+						},
+						error:function(data, status, opt){
+							console.log("code:"+data.status+"\n"+"message:"+data.responseText+"\n"+"error:"+opt);
+						}
+							  
+							  
+					});
+					
+				}
+				if($(this).is(':checked') == false){
+					
+					$.ajax({
+						url:'./seat/SeatDB2.jsp',
+						type:'get',
+						data:{'S_num':$(this).attr('value'),
+							  'T_num':${T_num},'Sc_num':$('input:hidden[name=Sc_num]').val(),
+							  'M_num':$('input:hidden[name=M_num]').val()
+							  },
+						dataType:'json',
+						success: function(data){
+							if(data.alt == "예매중인 좌석"){
+								alert('체크풀고 디비 변경');
+							}
+						},
+						error:function(data, status, opt){
+							console.log("code:"+data.status+"\n"+"message:"+data.responseText+"\n"+"error:"+opt);
+						}
+							  
+							  
+					});
+					
+				}
 				
-				$.ajax({
-					url:'./seat/SeatDB.jsp',
-					type:'get',
-					data:{'S_num':$(this).attr('value'),
-						  'T_num':${T_num},'Sc_num':$('input:hidden[name=Sc_num]').val() },
-					success: function(data){
-						alert('성공');
-						alert(data);
-					}
-				});
 				
 				
 			
 			});
 			
 			$('#form').submit(function(){
-				alert(cnt);
-				alert(sum);
+				alert("cnt:"+cnt+"sum:"+sum);
 				if(cnt != sum){
 					alert('인원수와 선택좌석수가 다름');
 					return false;
@@ -170,6 +207,12 @@
 		height:25px;
 		
 	}
+	#b1{
+		width:25px;
+		height:25px;
+		background:blue;
+		
+	}
 
 	#c{
 		width:25px;
@@ -216,7 +259,12 @@
 		<form action="./seatBook.st" method="post" id="form">
 		<input type="hidden" value="${T_num }" name="T_num">
 		<input type="hidden" value="${Sc_num }" name="Sc_num">
+		<input type="hidden" value="${param.M_num }" name="M_num">
 			<c:forEach items="${SList }" var="SList" varStatus="status">
+				
+				<c:if test="${SList.s_choice eq 2 }">
+					<input type="button" value="X" id="b1" class="${SList.s_num }" disabled="disabled">
+				</c:if>
 				
 				<c:if test="${SList.s_choice eq 1 }">
 					<input type="button" value="X" id="b" class="${SList.s_num }" disabled="disabled">

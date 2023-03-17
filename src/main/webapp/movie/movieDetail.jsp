@@ -115,6 +115,7 @@
 			<br>
 			<c:forEach items="${tList }" var="tList">
 				상영일 : ${tList.t_date }
+				${tList.t_num }
 				시작시간 : <a href='./seatChoice.st?T_num=${tList.t_num }&Sc_num=${tList.sc_num}&M_num=${movieCd }&M_name=${movieNm }' class="a">${tList.t_startTime }</a>
 				종료시간 : ${tList.t_endTime }
 				<br>
