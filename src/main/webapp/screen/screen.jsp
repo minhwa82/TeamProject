@@ -74,8 +74,6 @@
 				})
 			}
 		}); */
-		
-	});
 
 </script>
 <!-- Jquery  -->
@@ -85,64 +83,7 @@
 	<div class="main-nav overlay clearfix">
 	<a class="blog-logo" href="./Main.mv"><img src="" alt="Hello Movie"/></a>
 	<jsp:include page="../inc/top.jsp"/>
-	<!-- <ul id="menu"> 메뉴 영역
-		<li class="screen" role="presentation"><a href="#">극장</a></li>
-		<li class="socialheader" role="presentation"><a href="#">영화</a></li>
-		<li class="socialheader" role="presentation"><a href="#">예매</a></li>
-		<li class="socialheader" role="presentation"><a href="#">혜택</a></li>
-		<span class="socialheader">
-		<a href="#"><span class='symbol'>로그인</span></a>
-		<a href="#"><span class='symbol'>회원가입</span></a>
-		</span>
-	</ul> 메뉴 영역 -->
-		<!-- <div class="menu_pan"> 마우스 오버 서브메뉴 영역
-			<div class="sub_menu">
-				<div class="screen_zone"> <a>서울</a> 
-					<div> <a href="./Screen.sc?Sc_num=02_1" title="강남">강남점</a> </div>
-					<div> <a href="./Screen.sc?Sc_num=02_2" title="명동">명동점</a> </div>
-				</div>
-			</div>
-			
-			<div class="sub_menu">
-				<div class="screen_zone"> <a>대구</a> 
-					<div> <a href="./Screen.sc?Sc_num=053_1" title="대구수성">수성점</a> </div>
-					<div> <a href="./Screen.sc?Sc_num=053_2" title="대구현대">현대점</a> </div>
-				</div>
-			</div>
-			
-			<div class="sub_menu">
-				<div class="screen_zone"> <a>대전</a> 
-					<div> <a href="./Screen.sc?Sc_num=042_1" title="대전탄방">탄방점</a> </div>
-					<div> <a href="./Screen.sc?Sc_num=042_2" title="대전가오">가오점</a> </div>
-				</div>
-			</div>
-			
-			<div class="sub_menu">
-				<div class="screen_zone"> <a>부산</a> 
-					<div> <a href="./Screen.sc?Sc_num=051_1" title="부산서면">서면점</a> </div>
-					<div> <a href="./Screen.sc?Sc_num=051_2" title="부산해운대">해운대점</a> </div>
-				</div>
-			</div>
-			
-			<div class="sub_menu">
-				<div class="screen_zone"> <a>광주</a> 
-					<div> <a href="./Screen.sc?Sc_num=062_1" title="대구수성">광주점</a> </div>
-					<div> <a href="./Screen.sc?Sc_num=062_2" title="대구현대">용봉점</a> </div>
-				</div>
-			</div>
-			
-			</div> 마우스 오버 서브메뉴 영역 -->
-		</div>
-	</div>
-	
-	<!-- <div class="screen_addr">
-		<div class="zone"><a href="./Screen.mv?Sc_num=02_1">서울</a></div>
-		<div class="zone"><a href="./Screen.mv?Sc_num=053_1">대구</a></div>
-		<div class="zone"><a href="./Screen.mv?Sc_num=042_1">대전</a></div>
-		<div class="zone"><a href="./Screen.mv?Sc_num=051_1">부산</a></div>
-		<div class="zone"><a href="./Screen.mv?Sc_num=062_1">광주</a></div>
-	</div> -->
-	
+
 	<header class="main-header post-head " style="background-image: url(http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/10/2015/10/10174958/fas-compressor.jpg)">
 	<div class="vertical">
 		<div class="main-header-content inner">
@@ -161,7 +102,6 @@
 			<!-- <li>강남의 중심! 강남 소비문화의 중심지인 지하철 2호선 , 신분당선 - 강남역과 연결
 로맨틱 멀티플렉스! 젊은 도시 강남이 한 눈에 보이는 최상의 View를 제공</li>	 -->	
 		</ul>
-		<input type="button" value="해당 극장에서 예매하기" onclick="location.href=''"><!-- ./예매 페이지 이동(Sc_num 받아야 됨) -->
 		<hr>
 	</section>
 	</article>

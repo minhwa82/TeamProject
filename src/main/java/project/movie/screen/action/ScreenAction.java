@@ -14,6 +14,7 @@ public class ScreenAction implements Action {
 		String Sc_num = request.getParameter("Sc_num");
 		ScreenDAO dao = new ScreenDAO();
 
+
 		
 		request.setAttribute("dto", dao.screendetail(Sc_num));
 //		request.setAttribute("Sc_num", Sc_num);
