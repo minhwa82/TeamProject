@@ -6,14 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
+
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-
-import project.movie.booking.db.BookingDTO;
-import project.movie.seat.db.SeatDTO;
 
 public class ScreenDAO {
 	// 공통 변수 선언
@@ -86,69 +83,43 @@ public class ScreenDAO {
 			e.printStackTrace();
 		} finally {
 			closeDB();
-		}
+
 
 		return dto;
 	}
 	// 극장 정보 조회
-
+	
 	// 극장 목록 출력
 	public List screenList() {
 		List screenList = new ArrayList();
-
+		
 		try {
 			con = getCon();
-
+			
 			sql = "select * from screen";
-
+			
 			pstmt = con.prepareStatement(sql);
-
+			
 			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
+			
+			while(rs.next()) {
 				ScreenDTO dto = new ScreenDTO();
-				dto.setSc_num(rs.getString("Sc_num"));
 				dto.setSc_zone(rs.getString("Sc_zone"));
 				dto.setSc_name(rs.getString("Sc_name"));
-
+				
 				screenList.add(dto);
 			}
 			System.out.println(" DAO : 스크린 목록 저장 완료 ");
-			System.out.println("#%#%@$@#$@#$@#$@#$@#");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();
 		}
 
+		
 		return screenList;
 	}
-
+	
 	// 극장 목록 출력
-
-	// 가격 출력
-	public int getPrice(String Sc_num) {
-		int price = 0;
-		try {
-			con = getCon();
-
-			sql = "select Sc_price from screen where Sc_num=?";
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, Sc_num);
-			
-			rs= pstmt.executeQuery();
-			if(rs.next()) {
-				price = rs.getInt("Sc_price");
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeDB();
-		}
-
-		return price;
-	}
-	// 가격 출력
 
 }

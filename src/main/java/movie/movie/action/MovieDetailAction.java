@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import movie.movie.db.MovieDAO;
 import movie.movie.db.NaverAPIDTO;
 import movie.review.db.ReviewDAO;
 
@@ -26,6 +27,13 @@ public class MovieDetailAction implements Action {
 		
 		request.setAttribute("userRating", dto.getUserRating());
 		request.setAttribute("img", dto.getImg());
+		
+		MovieDAO Mdao = new MovieDAO();
+		List tList = Mdao.getTime(movieCd);
+		
+		request.setAttribute("tList", tList);
+		request.setAttribute("movieCd", movieCd);
+		request.setAttribute("movieNm", movieNm);
 		
 		ActionForward forward = new ActionForward();
 		

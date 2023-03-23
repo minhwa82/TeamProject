@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,7 +62,11 @@
 
 
 </script>
-
+<style>
+	.a{
+		color:white;
+	}
+</style>
 
 
 </head>
@@ -85,8 +90,8 @@
 	<header class="main-header author-head " style="background-image: url(http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/10/2015/09/30162427/sep2.jpg)">
 	</header>
 	
-	<main class="content" role="main">
-	
+	<main class="content1" role="main">
+		<div>
 		<div class="detailDiv1">
 			<img src="<%=img%>" width="300px">
 		</div>
@@ -105,10 +110,22 @@
 			평점 : <%=userRating %><br>
 			예매율 : <%=reservationRate %>%<br>
 			</span>
+			
+			시간표
+			<br>
+			<c:forEach items="${tList }" var="tList">
+				상영일 : ${tList.t_date }
+				시작시간 : <a href='./seatChoice.st?T_num=${tList.t_num }&Sc_num=${tList.sc_num}&M_num=${movieCd }&M_name=${movieNm }' class="a">${tList.t_startTime }</a>
+				종료시간 : ${tList.t_endTime }
+				<br>
+			</c:forEach>
+			
+			
+			
 		</div>	
 		
+		</div>
 		<hr>
-		
 		<div class="detailDiv3">
 			<h4> 한줄평 및 평점 </h4>
 			

@@ -149,6 +149,82 @@ public class MovieDAO {
 	} // getMovieAPI()
 	
 	
+	// insertTime(TimeDTO dto, String M_num, String Sc_num)
+	public int insertTime(TimeDTO dto, String M_num, String Sc_num) {
+		int T_num = 0;
+		
+		
+		try {
+			con = getCon();
+			sql = "select max(T_num) from time";
+			
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				T_num = rs.getInt(1)+1;
+				
+				sql = "insert into time "
+						+ "values(?, ?, ?, ?, ?, ?)";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, T_num);
+				pstmt.setString(2, Sc_num);
+				pstmt.setString(3, M_num);
+				pstmt.setString(4, dto.getT_startTime());
+				pstmt.setString(5, dto.getT_endTime());
+				pstmt.setString(6, dto.getT_date());
+				
+				pstmt.executeUpdate();
+				
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return T_num;
+	}
+	// insertTime(TimeDTO dto, String M_num, String Sc_num)
+	
+	// getTime(String Sc_num, String M_num, String T_date)
+	public List getTime(String M_num) {
+		List tList = new ArrayList<>();
+		TimeDTO dto;
+		
+		try {
+			con = getCon();
+			sql = "select T_num, Sc_num, T_startTime, T_endTime, T_date from time where M_num=?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, M_num);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				dto = new TimeDTO();
+				dto.setT_num(rs.getInt(1));
+				dto.setSc_num(rs.getString(2));
+				dto.setT_startTime(rs.getString(3));
+				dto.setT_endTime(rs.getString(4));
+				dto.setT_date(rs.getString(5));
+				
+				tList.add(dto);
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		
+		return tList;
+	}
+	// getTime(String Sc_num, String M_num, String T_date)
 	
 	
 	
