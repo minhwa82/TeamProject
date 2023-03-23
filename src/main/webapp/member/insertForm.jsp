@@ -7,7 +7,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/css.css">
+<link rel="stylesheet" href="./css/css.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
 <script type="text/javascript">
 /*global $, document, window, setTimeout, navigator, console, location*/
