@@ -1,5 +1,6 @@
 package movie.movie.action;
 
+
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -29,15 +30,13 @@ public class TimeInsertProAction implements Action {
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
 		Date T_date = dateFormat.parse(date);
-		SimpleDateFormat fd = new SimpleDateFormat("yyyy-MM-dd");
-		dto.setT_date(fd.format(T_date));
 		
-		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
-		Date T_stime = timeFormat.parse(startTime);
-		Date T_etime = timeFormat.parse(endTime);
-		SimpleDateFormat td = new SimpleDateFormat("HH:mm");
-		dto.setT_startTime(td.format(T_stime));
-		dto.setT_endTime(td.format(T_etime));
+		long timeInMilliSeconds = T_date.getTime();
+        java.sql.Date sqlDate = new java.sql.Date(timeInMilliSeconds);
+		
+		dto.setT_date(sqlDate);
+		dto.setT_startTime(startTime);
+		dto.setT_endTime(endTime);
 		
 		
 		

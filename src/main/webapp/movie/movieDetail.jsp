@@ -14,6 +14,7 @@
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300italic,300,400italic,700,700italic|Playfair+Display:400,700,400italic,700italic"/>
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
@@ -41,7 +42,7 @@
 						var tmp2 = $(this).find('genreNm').text();
 						var tmp3 = $(this).find('director').find('peopleNm').text();
 						var tmp4 = $(this).find('watchGradeNm').text();
-						var tmp5 = $(this).find('actor').find('peopleNm').text();
+						var tmp5 = $(this).find('actor').find('peopleNm');
 						var tmp6 = $(this).find('movieCd').text();
 						var tmp7 = $(this).find('movieNm').text();
 						var tmp8 = $(this).find('openDt').text();
@@ -50,7 +51,14 @@
 						$(".genreNm").append(tmp2);
 						$(".peopleNm").append(tmp3);
 						$(".watchGradeNm").append(tmp4);
-						$(".actor").append(tmp5);
+						for(var i=0; i<tmp5.size(); i++){
+							var temp = tmp5.get(i);
+							$(".actor").append(temp);
+							if(i != tmp5.size()-1){
+							$(".actor").append(", ");								
+							}
+						}
+						
 						$(".movieCd").append(tmp6);
 						$(".movieNm").append(tmp7);
 						$(".openDt").append(tmp8);
@@ -113,13 +121,17 @@
 			
 			시간표
 			<br>
+			<f:formatDate value="${now }" var="today" pattern="yyyy-MM-dd HH:mm"/>
+
 			<c:forEach items="${tList }" var="tList">
-				상영일 : ${tList.t_date }
-				${tList.t_num }
-				시작시간 : <a href='./seatChoice.st?T_num=${tList.t_num }&Sc_num=${tList.sc_num}&M_num=${movieCd }&M_name=${movieNm }' class="a">${tList.t_startTime }</a>
-				종료시간 : ${tList.t_endTime }
-				<br>
+				<c:if test="${tList.t_date > today }">
+					상영일 : ${tList.t_date }
+					시작시간 : <a href='./seatChoice.st?T_num=${tList.t_num }&Sc_num=${tList.sc_num}&M_num=${movieCd }&M_name=${movieNm }' class="a">${tList.t_startTime }</a>
+					종료시간 : ${tList.t_endTime }
+					<br>
+				</c:if>
 			</c:forEach>
+			
 			
 			
 			
