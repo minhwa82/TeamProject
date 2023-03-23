@@ -1,5 +1,6 @@
 package movie.movie.action;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +32,9 @@ public class MovieDetailAction implements Action {
 		MovieDAO Mdao = new MovieDAO();
 		List tList = Mdao.getTime(movieCd);
 		
+		Date now = new Date();
+
+		request.setAttribute("now", now);
 		request.setAttribute("tList", tList);
 		request.setAttribute("movieCd", movieCd);
 		request.setAttribute("movieNm", movieNm);

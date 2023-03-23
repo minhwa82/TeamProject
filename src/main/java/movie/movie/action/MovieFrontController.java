@@ -122,9 +122,21 @@ public class MovieFrontController extends HttpServlet{
 		
 	}
 	else if(command.equals("/timeInsertProAction.mv")) {
-		System.out.println(" /timeInsertProAction.mve 호출 ");
+		System.out.println(" /timeInsertProAction.mv 호출 ");
 		
 		action = new TimeInsertProAction();
+		
+		try {
+			forward = action.execute(request, response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	else if(command.equals("/bookAction.mv")) {
+		System.out.println(" /bookAction.mv 호출 ");
+		
+		action = new BookAction();
 		
 		try {
 			forward = action.execute(request, response);

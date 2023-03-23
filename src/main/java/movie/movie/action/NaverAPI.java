@@ -27,14 +27,10 @@ import movie.movie.db.NaverAPIDTO;
 
 
 	    public NaverAPIDTO getNaverAPI(String movieNm) {
-	    	
-	    	System.out.println("===================================================="+movieNm);
 	    	NaverAPIDTO dto = new NaverAPIDTO();
 	    	
 	        String clientId = "wf1OgFI5wpDsumQh_6Sp"; //애플리케이션 클라이언트 아이디
 	        String clientSecret = "kX2ZWirTjW"; //애플리케이션 클라이언트 시크릿
-
-
 	        String text = null;
 	       
 	        try {
@@ -42,21 +38,13 @@ import movie.movie.db.NaverAPIDTO;
 	        } catch (UnsupportedEncodingException e) {
 	            throw new RuntimeException("검색어 인코딩 실패",e);
 	        }
-
-
 	        String apiURL = "https://openapi.naver.com/v1/search/movie.json?query=" + text;    // JSON 결과
 	        //String apiURL = "https://openapi.naver.com/v1/search/movie.xml?query="+ text; // XML 결과
-
 
 	        Map<String, String> requestHeaders = new HashMap<>();
 	        requestHeaders.put("X-Naver-Client-Id", clientId);
 	        requestHeaders.put("X-Naver-Client-Secret", clientSecret);
 	        String responseBody = get(apiURL,requestHeaders);
-	        
-	        System.out.println(responseBody);
-	        
-	        
-	        
 	        
 	        JSONParser parser = new JSONParser();
 	        
@@ -69,8 +57,6 @@ import movie.movie.db.NaverAPIDTO;
 				String userRating = jsonObj.get("userRating").toString();
 				String img = jsonObj.get("image").toString();
 				
-				System.out.println(img);
-				
 				dto.setImg(img);
 				dto.setUserRating(userRating);
 				
@@ -80,10 +66,7 @@ import movie.movie.db.NaverAPIDTO;
 				e.printStackTrace();
 			}
 			
-			
 			return dto;
-
-	        
 	    }
 
 

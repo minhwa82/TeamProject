@@ -89,6 +89,7 @@
 		
 		<c:forEach items="${dailyResult.boxOfficeResult.dailyBoxOfficeList}" var="boxoffice">
 			<h1 class="post-title"><a href="movieList.mv">영화목록</a></h1>
+			<a href="">dd</a>
 		</c:forEach>	
 			
 		</c:if>	

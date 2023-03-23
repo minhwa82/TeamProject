@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
@@ -24,28 +24,6 @@
 		
 		
 		 $(function (){
-			 
-			//var save = ""; 
-			 
-			/* $.each(${JList}, function(key, value){
-				$('.'+value.s_num).on('click',function(){
-					if($(this).val() == 'O' ){
-						save = $('.select').val();
-						$(this).css('background', 'blue');
-						$(this).val(value.s_num);
-						$('.select').attr('value',$('.select').val()+value.s_num);
-						alert(save);
-					}else {
-						$(this).css('background', 'white');
-						$(this).val('O');
-						alert(save);
-						$('.select').remove('value', $(this.val()));
-					}
-					
-			    });
-			});	 */
-			
-			
 			var aPeople = 0;
 			var yPeople = 0;
 			var sum = 0;
@@ -58,14 +36,14 @@
 				sum = parseInt(aPeople) + parseInt(yPeople);
 				
 				if(cnt>sum){
-					alert('ÁÂ¼®Ãë¼Ò ÈÄ ÀÎ¿ø Á¶Á¤');
+					alert('ì¢Œì„ì·¨ì†Œ í›„ ì¸ì› ì¡°ì •');
 					aPeople = save;
 					return false;
 				}
 				$('input:button[name=adult]').css('background', 'white');
 				$(this).css('background', 'blue');
 				save = $(this).attr('value');
-				$('input:text[name=aNum]').val(save);
+				$('input:hidden[name=aNum]').val(save);
 			}),
 				
 			$('input:button[name=youth]').on('click', function(){
@@ -74,14 +52,14 @@
 				sum = parseInt(aPeople) + parseInt(yPeople);
 				
 				if(cnt>sum){
-					alert('ÁÂ¼®Ãë¼Ò ÈÄ ÀÎ¿ø Á¶Á¤');
+					alert('ì¢Œì„ì·¨ì†Œ í›„ ì¸ì› ì¡°ì •');
 					yPeople = save;
 					return false;
 				}
 				$('input:button[name=youth]').css('background', 'white');
 				$(this).css('background', 'blue');
 				save = $(this).attr('value');
-				$('input:text[name=yNum]').val(save);
+				$('input:hidden[name=yNum]').val(save);
 				
 			}),
 				
@@ -90,84 +68,85 @@
 				
 				sum = parseInt(aPeople) + parseInt(yPeople);
 				if(sum == 0){
-					alert('ÀÎ¿ø¼ö ¼±ÅÃ');
+					alert('ì¸ì›ìˆ˜ ì„ íƒ');
 					$('input:checkbox[id=c]').checked = false;
 					return false;
 				}
 					
 				if(cnt>sum){
-					alert("ÀÎ¿øÃÊ°ú");
-					$('input:checkbox[id=c]').checked = false;
+					alert("ì¸ì›ì´ˆê³¼");
+					
 					return false;
 				}
-				
-				$.ajax({
-					url:'./seat/SeatDB.jsp',
-					type:'get',
-					data:{'S_num':$(this).attr('value'),
-						  'T_num':${T_num},'Sc_num':$('input:hidden[name=Sc_num]').val() },
-					success: function(data){
-						alert('¼º°ø');
-						alert(data);
-					}
-				});
-				
-				
-			
+				let tmp = $(this);
+				if(tmp.is(':checked') == true){
+					
+					$.ajax({
+						url:'./seat/SeatDB.jsp',
+						type:'get',
+						data:{'S_num':$(this).attr('value'),
+							  'T_num':${T_num},'Sc_num':$('input:hidden[name=Sc_num]').val(),
+							  'M_num':$('input:hidden[name=M_num]').val()
+							  },
+						dataType:'json',
+						success: function(data){
+							if(data.alt == "ì˜ˆë§¤ì¤‘ì¸ ì¢Œì„"){
+								alert('ì˜ˆë§¤ì¤‘ì¸ ì¢Œì„');
+								tmp.attr("checked",false);
+							}
+						},
+						error:function(data, status, opt){
+							console.log("code:"+data.status+"\n"+"message:"+data.responseText+"\n"+"error:"+opt);
+						}
+					});
+				}
+				if($(this).is(':checked') == false){
+					
+					$.ajax({
+						url:'./seat/SeatDB2.jsp',
+						type:'get',
+						data:{'S_num':$(this).attr('value'),
+							  'T_num':${T_num},'Sc_num':$('input:hidden[name=Sc_num]').val(),
+							  'M_num':$('input:hidden[name=M_num]').val()
+							  },
+						dataType:'json',
+						success: function(data){
+							if(data.alt == "ì˜ˆë§¤ì¤‘ì¸ ì¢Œì„"){
+								alert('ì²´í¬í’€ê³  ë””ë¹„ ë³€ê²½');
+							}
+						},
+						error:function(data, status, opt){
+							console.log("code:"+data.status+"\n"+"message:"+data.responseText+"\n"+"error:"+opt);
+						}	  
+					});
+				}
 			});
 			
 			$('#form').submit(function(){
-				alert(cnt);
-				alert(sum);
+				//alert("cnt:"+cnt+"sum:"+sum);
 				if(cnt != sum){
-					alert('ÀÎ¿ø¼ö¿Í ¼±ÅÃÁÂ¼®¼ö°¡ ´Ù¸§');
+					alert('ì¸ì›ìˆ˜ì™€ ì„ íƒì¢Œì„ìˆ˜ê°€ ë‹¤ë¦„');
+					return false;
+				}
+				if(cnt == 0){
+					alert('ì¸ì› / ì¢Œì„ ì„ íƒ í›„ ì˜ˆë§¤');
 					return false;
 				}
 				
 			});
-				
-			
-
 		});
-		 
-		$(document).ready(function(){
-			
-			
-		});
-		 
-		 
-		
-		 
-			/* function check_count(obj){
-				var check = document.getElementsByName('seat');
-				var count = 0;
-				
-				var aPeople = document.getElementsByName('adult').value;
-				var yPeople = document.getElementsByName('youth').value;
-				var sPeople = aPeople + sPeople;
-				
-				alert(sPeople);
-				
-				for(var i=0; i<check.length; i++){
-					if(check[i].checked){
-						count++;
-					}
-				}
-				if(count > 3){
-					alert('dd');
-					obj.checked = false;
-				}
-			} */
-		
-		
-
-
 </script>
 
 <style>
 	#b{
 		width:25px;
 		height:25px;
+		
+	}
+	#b1{
+		width:25px;
+		height:25px;
+		background:blue;
 		
 	}
 
@@ -207,16 +186,25 @@
 	<header class="main-header post-head " style="background-image: url(http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/10/2015/10/10174958/fas-compressor.jpg)">
 	<div class="vertical">
 		<div class="main-header-content inner">
-			<h1 class="post-title">${M_name }</h1>
-			<h1>ÀÎ¿ø/ÁÂ¼®</h1>
+			<h2 class="post-title"  style="color:white;">${M_name }</h2>
+			<h2 style="color:white;">ì¸ì›/ì¢Œì„</h2>
+			<h4 style="color:white;">${Scdto.sc_zone } ${Scdto.sc_name } / ${tdto.t_date } / ${tdto.t_startTime } ~ ${tdto.t_endTime }</h4>
 		</div>
 		
 		
 			
-		<form action="./seatBook.st" method="post" id="form">
+		<form action="./seatBook.st" method="get" id="form">
 		<input type="hidden" value="${T_num }" name="T_num">
 		<input type="hidden" value="${Sc_num }" name="Sc_num">
+		<input type="hidden" value="${param.M_num }" name="M_num">
+		<input type="hidden" value="${M_name }" name="M_name">
+		<input type="button" value="SCREEN" disabled="disabled" style="width:25%;"><br>
+		
 			<c:forEach items="${SList }" var="SList" varStatus="status">
+				
+				<c:if test="${SList.s_choice eq 2 }">
+					<input type="button" value="X" id="b1" class="${SList.s_num }" disabled="disabled">
+				</c:if>
 				
 				<c:if test="${SList.s_choice eq 1 }">
 					<input type="button" value="X" id="b" class="${SList.s_num }" disabled="disabled">
@@ -230,20 +218,21 @@
 				</c:if>
 			</c:forEach>
 		
-			<span id="s">¼ºÀÎ   : </span>
+			<span id="s">ì„±ì¸   : </span>
 			<c:forEach begin="1" end="8" step="1" var="i">
 				<input type="button" value="${i }" name="adult">	
 			</c:forEach>
 			<br>
-			<span id="s">Ã»¼Ò³â : </span>
+			<span id="s">ì²­ì†Œë…„ : </span>
 			<c:forEach begin="1" end="8" step="1" var="i">
 				<input type="button" value="${i }" name="youth">
 			</c:forEach>
-		
+
+			<input type="hidden" value="" name="aNum">
+			<input type="hidden" value="" name="yNum">
+			<input type="hidden" value="${T_num }" name="T_num">
 			<hr>
-			<input type="text" value="" name="aNum">
-			<input type="text" value="" name="yNum">
-			<input type="submit" value="¿¹¸ÅÇÏ±â">
+			<input type="submit" value="ì˜ˆë§¤í•˜ê¸°">
 		
 		</form>	
 		

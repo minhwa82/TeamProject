@@ -1,21 +1,19 @@
 package movie.movie.db;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Vector;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -172,7 +170,7 @@ public class MovieDAO {
 				pstmt.setString(3, M_num);
 				pstmt.setString(4, dto.getT_startTime());
 				pstmt.setString(5, dto.getT_endTime());
-				pstmt.setString(6, dto.getT_date());
+				pstmt.setDate(6, (Date) dto.getT_date());
 				
 				pstmt.executeUpdate();
 				
@@ -209,7 +207,7 @@ public class MovieDAO {
 				dto.setSc_num(rs.getString(2));
 				dto.setT_startTime(rs.getString(3));
 				dto.setT_endTime(rs.getString(4));
-				dto.setT_date(rs.getString(5));
+				dto.setT_date(rs.getDate(5));
 				
 				tList.add(dto);
 			}
@@ -225,6 +223,40 @@ public class MovieDAO {
 		return tList;
 	}
 	// getTime(String Sc_num, String M_num, String T_date)
+	
+	// getTime(int T_num)
+	public TimeDTO getTime(int T_num) {
+		TimeDTO dto = null;
+		
+		try {
+			con = getCon();
+			sql = "select * from time where T_num =?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, T_num);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto = new TimeDTO();
+				dto.setSc_num(rs.getString("Sc_num"));
+				dto.setT_date(rs.getDate("T_date"));
+				dto.setT_startTime(rs.getString("T_startTime"));
+				dto.setT_endTime(rs.getString("T_endTime"));
+				
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return dto;
+	}
+	// getTime(int T_num)
+	
+	
 	
 	
 	

@@ -1,13 +1,17 @@
 package movie.movie.db;
 
 
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.Date;
+
 public class TimeDTO {
 	private int T_num;
 	private String Sc_num;
 	private String M_num;
 	private String T_startTime;
 	private String T_endTime;
-	private String T_date;
+	private Date T_date;
 	public int getT_num() {
 		return T_num;
 	}
@@ -38,10 +42,10 @@ public class TimeDTO {
 	public void setT_endTime(String t_endTime) {
 		T_endTime = t_endTime;
 	}
-	public String getT_date() {
+	public Date getT_date() {
 		return T_date;
 	}
-	public void setT_date(String t_date) {
+	public void setT_date(Date t_date) {
 		T_date = t_date;
 	}
 	
