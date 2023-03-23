@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import movie.db.MovieDAO;
-import movie.db.MovieDTO;
 import API.NaverAPI;
 import API.NaverAPIDTO;
+import movie.main.db.MovieDAO;
+import movie.main.db.MovieDTO;
 
 public class AdminBookingList implements Action {
 

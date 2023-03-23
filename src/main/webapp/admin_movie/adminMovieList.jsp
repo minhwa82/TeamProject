@@ -28,7 +28,7 @@
 	</header>
 	
 	<main class="content" role="main">
-	<form action="./MovieWrite.mv" method="post">	
+	<form action="./MovieWrite.mm" method="post" >	
 
 	<input type ="hidden" name="M_num" value="${dto.M_num }">
 	<table id="notice">
@@ -64,8 +64,8 @@
 				<td class="left">${dto.m_reservationRate }</td>
 				
 				<td>
-				<a href="./MovieUpdateAction.mv?M_num=${dto.m_num}">수정</a>/
-				<a href="./MovieDelteAction.mv?M_num=${dto.m_num}">삭제</a></td>
+				<a href="./MovieUpdateAction.mm?M_num=${dto.m_num}">수정</a>/
+				<a href="./MovieDelteAction.mm?M_num=${dto.m_num}">삭제</a></td>
 		   
 		    </tr>
 	    </c:forEach>

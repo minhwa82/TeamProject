@@ -52,7 +52,7 @@ Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">Bootstr
 <table class="question">
     <caption class="qtit"><h2>영화 수정</h2></caption>
     
-    <form action="./AdminMovieUpdate.mv" method="post" >
+    <form action="./AdminMovieUpdate.mm" method="post"  enctype="multipart/form-data">
      <input type ="hidden" name="M_num" value="${dto.m_num }">
      
         <tr>
@@ -71,12 +71,12 @@ Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">Bootstr
 			  		<option value="Mystery" <c:if test="${dto.m_type.equals('Mystery') }">selected</c:if>>미스터리</option>
 			  		<option value="Adventure" <c:if test="${dto.m_type.equals('Adventure') }">selected</c:if>>모험</option>
 			  		<option value="Animation" <c:if test="${dto.m_type.equals('Animation') }">selected</c:if>>애니메이션</option>
-			  		<option value="heist" <c:if test="${dto.m_type.equals('heist') }">selected</c:if>>범죄</option>
+			  		<option value="Heist" <c:if test="${dto.m_type.equals('Heist') }">selected</c:if>>범죄</option>
 			  		<option value="Documentary" <c:if test="${dto.m_type.equals('Documentary') }">selected</c:if>>다큐</option>
 			  		<option value="Fantasy" <c:if test="${dto.m_type.equals('Fantasy') }">selected</c:if>>판타지</option>
 			  		<option value="Action" <c:if test="${dto.m_type.equals('Action') }">selected</c:if>>액션</option>
 			  		<option value="Noir" <c:if test="${dto.m_type.equals('Noir') }">selected</c:if>>누와르</option>
-			  		<option value="Romance" <c:if test="${dto.m_type.equals('Romance') }">selected</c:if>>로맨스</option>
+			 		<option value="Drama" <c:if test="${dto.m_type.equals('Drama') }">selected</c:if>>드라마</option>
 			  </select>
 			  </td>
 	    </tr>
@@ -98,6 +98,11 @@ Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">Bootstr
         <tr>
             <th class="th" scope="row">배우</th>
             <td><input type="text"  class="wid20" name="M_actor" value="${dto.m_actor }" />
+            </td>
+        </tr>
+        <tr>
+            <th class="th" scope="row">메인이미지</th>
+            <td><input type="file"  class="wid20" name="M_img" value="${dto.m_img }" />
             </td>
         </tr>
         <tr>
@@ -128,7 +133,7 @@ Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">Bootstr
           <input type ="submit" class="btngreen" value="영화수정하기">
       </div>
       <div class="btngreen">
-          <a href="/AdminMovieList.mv" class="Btn">취소</a>
+          <a href="/AdminMovieList.mm" class="Btn">취소</a>
       </div>
     </form>
 <!-- //Form -->

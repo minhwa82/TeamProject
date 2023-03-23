@@ -1,4 +1,4 @@
-<%@page import="movie.db.MovieDTO"%>
+<%@page import="movie.main.db.MovieDTO"%>
 <%@page import="member.db.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -15,7 +15,7 @@
 	font-size: 20px;
 }
 img{
-margin-right: 30px;
+	text-align: center;
 }
 #reser{
 	text-align: left;
@@ -58,23 +58,25 @@ margin-right: 30px;
 	
 			<c:forEach var="dto" items="${movieList }">
 				<a href="./movieDetails?M_num=${dto.m_num }">	
-				<img src="./upload/${dto.m_img }" 
+				<div style="float:left">
+				<img src="./upload/${dto.m_img }" onerror="this.style.display='none';"
 					       width="245px" height="340px" alt=""></a>
-					 <%-- <a href="./movieBooking?M_num=${dto.m_num }" class="btn-gradient red mini" > 예매하기 </a> --%>
-
+					       <br>
+					 <a href="./movieBooking?M_num=${dto.m_num }" class="btn-gradient red mini" > 예매하기 </a>
+				</div>
 	    </c:forEach>
 	    <br>
 	    
 	    <div #reser>
-		<c:forEach var="dto" items="${movieList }">
-			<%-- <input type="text" value="예매율 ${dto.m_reservationRate }%" width="50px"> --%>
+		<%-- <c:forEach var="dto" items="${movieList }">
+			<input type="text" value="예매율 ${dto.m_reservationRate }%" width="50px">
 				
 			<a href="#none"  class="btn-gradient yellow mini"  >
 			<span style="color: black;"> 예매율${dto.m_reservationRate }%</span></a>		
 			<a href="./movieBooking?M_num=${dto.m_num }" id="abc" class="btn-gradient red mini" > 예매하기 </a>
 		
 
-	    </c:forEach>
+	    </c:forEach> --%>
 	    </div>
 			
 	</table>

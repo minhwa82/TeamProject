@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 // Member컨트롤러: 회원정보 관련된 처리만 수행(서블릿)
-@WebServlet("*.mv")
+@WebServlet("*.mm")
 public class MovieFrontController extends HttpServlet{
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
@@ -36,7 +36,7 @@ public class MovieFrontController extends HttpServlet{
 		Action action = null;
 		ActionForward forward = null;
 		 
-		 if(command.equals("/Main.mv")) {
+		 if(command.equals("/Main.mm")) {
 			System.out.println("C : /Main.mv 호출! ");
 			// 패턴 3
 			action = new MovieMainAction();
@@ -47,7 +47,7 @@ public class MovieFrontController extends HttpServlet{
 			}
 			
 		 }
-		else if(command.equals("/AdminMovieList.mv")) {
+		else if(command.equals("/AdminMovieList.mm")) {
 			System.out.println("C : AdminMovieList.mv 호출");
 			//패턴 3
 			action = new AdminMovieListAction();
@@ -59,7 +59,7 @@ public class MovieFrontController extends HttpServlet{
 			}
 			
 		}
-		else if(command.equals("/Bonus.mv")) {
+		else if(command.equals("/Bonus.mm")) {
 			System.out.println("C : Bonus.mv 호출");
 			action = new BonusAction();
 			try {
@@ -67,7 +67,7 @@ public class MovieFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/MovieWrite.mv")) {
+		}else if(command.equals("/MovieWrite.mm")) {
 			System.out.println("C : MovieWrite.mv 호출");
 			action = new MovieWriteAction();
 			try {
@@ -75,7 +75,7 @@ public class MovieFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/MovieAddAction.mv")) {
+		}else if(command.equals("/MovieAddAction.mm")) {
 			System.out.println("C : MovieAddAction.mv 호출");
 			
 			action = new MovieAddAction();
@@ -87,7 +87,7 @@ public class MovieFrontController extends HttpServlet{
 			
 		}
 		// 로그인
-		else if (command.equals("/Login.mv")) {
+		else if (command.equals("/Login.mm")) {
 			System.out.println(" C : /Login.mv 호출! ");
 			
 			// 패턴1
@@ -95,7 +95,7 @@ public class MovieFrontController extends HttpServlet{
 			forward.setPath("./movie/loginForm.jsp");
 			forward.setRedirect(false);
 		}
-		else if (command.equals("/LoginAction.mv")) {
+		else if (command.equals("/LoginAction.mm")) {
 			System.out.println(" C : /LoginAction.mv 호출! ");
 			System.out.println(" C : DB 동작 필요, view 이동  ");
 			
@@ -107,7 +107,7 @@ public class MovieFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}	
-		else if(command.equals("/MovieUpdateAction.mv")) {
+		else if(command.equals("/MovieUpdateAction.mm")) {
 			System.out.println(" C : MovieUpdateAction 호출");
 			
 			action = new MovieUpdateAction();
@@ -117,7 +117,7 @@ public class MovieFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		else if(command.equals("/MovieDelteAction.mv")) {
+		else if(command.equals("/MovieDelteAction.mm")) {
 			System.out.println(" C : MovieDeleteAction 호출");
 			action = new MovieDeleteAction();
 			try {
@@ -126,7 +126,7 @@ public class MovieFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		else if(command.equals("/AdminPage.mv")) {
+		else if(command.equals("/AdminPage.mm")) {
 			System.out.println("/AdminPage.mv 호출");
 			action = new AdminPageAction();
 			try {
@@ -136,7 +136,7 @@ public class MovieFrontController extends HttpServlet{
 			}
 			
 		}
-		else if(command.equals("/AdminMemberInfo.mv")) {
+		else if(command.equals("/AdminMemberInfo.mm")) {
 			System.out.println("/AdminMemberInfo.mv  호출");
 			action = new AdminMemberInfo();
 			try {
@@ -145,7 +145,7 @@ public class MovieFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		else if(command.equals("/AdMemInfoUpdate.mv ")) {
+		else if(command.equals("/AdMemInfoUpdate.mm ")) {
 			System.out.println("AdMemInfoUpdate.mv 호출");
 			
 			action = new AdMemInfoUpdateAction();
@@ -155,7 +155,7 @@ public class MovieFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/AdminMovieUpdate.mv")) {
+		}else if(command.equals("/AdminMovieUpdate.mm")) {
 			System.out.println("AdminMovieUpdate.mv 호출");
 			action = new AdminMovieUpdateAction();
 			try {
@@ -164,7 +164,7 @@ public class MovieFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			
-		}else if(command.equals("/AdminBookingList.mv")) {
+		}else if(command.equals("/AdminBookingList.mm")) {
 			System.out.println("AdminBookingList.mv 호출");
 			action = new AdminBookingList();
 			

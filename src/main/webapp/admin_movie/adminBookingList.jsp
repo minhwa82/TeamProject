@@ -1,4 +1,4 @@
-<%@page import="movie.db.MovieDAO"%>
+<%@page import="movie.main.db.MovieDAO"%>
 <%@page import="member.db.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

@@ -12,7 +12,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import member.db.MemberDTO;
-import movie.db.MovieDTO;
+import movie.main.db.MovieDTO;
 import screen.db.ScreenDTO;
 import time.db.TimeDTO;
 

@@ -51,7 +51,7 @@ Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">Bootstr
 <table class="question">
     <caption class="qtit"><h2>영화 등록</h2></caption>
     
-    <form action="./MovieAddAction.mv" method="post" enctype="multipart/form-data">
+    <form action="./MovieAddAction.mm" method="post" enctype="multipart/form-data">
    
        <!--  <tr>
             <th class="th" scope="row">영화코드</th>
@@ -105,7 +105,7 @@ Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">Bootstr
         </tr>
         <tr>
             <th class="th" scope="row">메인이미지</th>
-            <td><input type="file"  class="wid20" name="M_img" />
+            <td><input type="file"  class="wid20" name="M_img"/>
             </td>
         </tr>
         <tr>
@@ -136,7 +136,7 @@ Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">Bootstr
           <input type ="submit" class="btngreen" value="영화등록">
       </div>
       <div class="btngreen">
-          <a href="/AdminMovieList.mv" class="Btn">취소</a>
+          <a href="/AdminMovieList.mm" class="Btn">취소</a>
       </div>
     </form>
 <!-- //Form -->

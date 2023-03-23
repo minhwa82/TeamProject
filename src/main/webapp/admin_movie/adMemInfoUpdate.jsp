@@ -52,7 +52,7 @@ Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">Bootstr
 <table class="question">
     <caption class="qtit"><h2>회원수정</h2></caption>
     
-    <form action="./AdminMemberInfo.mv" method="post" enctype="multipart/form-data">
+    <form action="./AdminMemberInfo.mm" method="post" enctype="multipart/form-data">
    
        <!--  <tr>
             <th class="th" scope="row">영화코드</th>
@@ -97,7 +97,7 @@ Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">Bootstr
           <input type ="submit" class="btngreen" value="회원수정하기">
       </div>
       <div class="btngreen">
-          <a href="./AdminMovieList.mv" class="Btn">취소</a>
+          <a href="./AdminMovieList.mm" class="Btn">취소</a>
       </div>
     </form>
 <!-- //Form -->

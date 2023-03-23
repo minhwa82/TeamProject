@@ -1,10 +1,14 @@
 package movie;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import movie.db.MovieDAO;
-import movie.db.MovieDTO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import movie.main.db.MovieDAO;
+import movie.main.db.MovieDTO;
 
 public class MovieUpdateAction implements Action {
 
@@ -12,6 +16,7 @@ public class MovieUpdateAction implements Action {
 	public ActionForward execute(HttpServletRequest request,
 								 HttpServletResponse response) throws Exception {
 		System.out.println(" AdminUpdateAction_execute 호출");
+		
 		
 		String M_num = request.getParameter("M_num");
 		

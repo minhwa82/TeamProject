@@ -5,6 +5,7 @@ package movie;
 
 import java.sql.Date;
 
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,8 +14,8 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import movie.db.MovieDAO;
-import movie.db.MovieDTO;
+import movie.main.db.MovieDAO;
+import movie.main.db.MovieDTO;
 
 public class MovieAddAction implements Action {
 
@@ -70,7 +71,7 @@ public class MovieAddAction implements Action {
 				dao.insertMovie(dto);
 				System.out.println(dto);
 				
-				forward.setPath("./AdminMovieList.mv");
+				forward.setPath("./AdminMovieList.mm");
 				forward.setRedirect(true);
 				
 				

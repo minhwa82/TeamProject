@@ -5,8 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import movie.db.MovieDAO;
-import movie.db.MovieDTO;
+import movie.main.db.MovieDAO;
+import movie.main.db.MovieDTO;
 
 public class MovieMainAction implements Action {
 

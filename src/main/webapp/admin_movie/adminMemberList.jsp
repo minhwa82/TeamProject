@@ -32,8 +32,8 @@
 	</header>
 	
 	<main class="content" role="main">
-	<form action="./AdminPage.mv" method="post">	
-	<input type ="hidden" name="Mem_num" value="${dto.Mem_num }">
+	<form action="./AdminPage.mm" method="post">	
+	<input type ="hidden" name="Mem_num" value="${dto.mem_num }">
 
 	<table>
 		<tr>
@@ -61,15 +61,15 @@
 				<td class="MemList">${dto.mem_phone }</td>
 				<td class="MemList">${dto.mem_birth }</td>
 				<td class="MemList">${dto.mem_grade }</td>
-				<td class="MemList">${dto.mem_addr }</td>
+				<td class="MemList">${dto.mem_addr1 }</td>
 				<td class="MemList">${dto.mem_email }</td>
 				<td class="MemList">${dto.mem_mType }</td>
 				<td class="MemList">${dto.mem_joinDate }</td>
 <%-- 				<td class="left">${dto.mem_rCount }</td>
  --%>				
 				<td>
-				<a href="./AdMemInfoUpdate.mv?Mem_num=${dto.mem_num}">수정</a>/
-				<a href="./AdMemInfodelete.mv?Mem_num=${dto.mem_num}">삭제</a></td>
+				<a href="./AdMemInfoUpdate.mm?Mem_num=${dto.mem_num}">수정</a>/
+				<a href="./AdMemInfodelete.mm?Mem_num=${dto.mem_num}">삭제</a></td>
 		   
 		    </tr>
 	    </c:forEach>

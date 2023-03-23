@@ -1,4 +1,4 @@
-package movie.db;
+package movie.main.db;
 
 
 

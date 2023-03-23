@@ -1,4 +1,4 @@
-package movie.db;
+package movie.main.db;
 
 import java.sql.Connection;
 
@@ -100,8 +100,7 @@ public class MovieDAO {
 		
 		try {
 			con = getCon();
-			
-			sql = "select * from movie where M_img is not null order by M_reservationRate desc";
+			sql = "select * from movie order by M_reservationRate desc";
 			pstmt = con.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
@@ -223,7 +222,7 @@ public class MovieDAO {
 						dto.setMem_phone(rs.getString("Mem_phone"));
 						dto.setMem_birth(rs.getString("Mem_birth"));
 						dto.setMem_grade(rs.getString("Mem_grade"));
-						dto.setMem_addr(rs.getString("Mem_addr"));
+						dto.setMem_addr1(rs.getString("Mem_addr1"));
 						dto.setMem_email(rs.getString("Mem_email"));
 						dto.setMem_mType(rs.getString("Mem_mType"));
 						dto.setMem_joinDate(rs.getTimestamp("Mem_joinDate"));
@@ -258,7 +257,7 @@ public class MovieDAO {
 					if(rs.next()) {
 						dto = new MemberDTO();
 						
-						dto.setMem_addr(rs.getString("Mem_addr"));
+						dto.setMem_addr1(rs.getString("Mem_addr1"));
 						dto.setMem_birth(rs.getString("Mem_birth"));
 						dto.setMem_email(rs.getString("Mem_email"));
 						dto.setMem_grade(rs.getString("Mem_grade"));
@@ -295,7 +294,7 @@ public class MovieDAO {
 					con = getCon();
 					// 3. sql작성(update)
 					sql="update movie set "
-							+ " M_name=?,M_type=?,M_runTime=?,M_director=?,M_age=?,M_actor=?, "
+							+ " M_name=?,M_type=?,M_runTime=?,M_director=?,M_age=?,M_actor=?,M_img=?, "
 							+ " M_playDate=?,M_explain=?,M_grade=?,M_reservationRate=? "
 							+ " where M_num=?";
 					pstmt = con.prepareStatement(sql);
@@ -306,12 +305,12 @@ public class MovieDAO {
 					pstmt.setString(4, dto.getM_director());
 					pstmt.setInt(5, dto.getM_age());
 					pstmt.setString(6, dto.getM_actor());
-//					pstmt.setString(8, dto.getM_img());
-					pstmt.setString(7, dto.getM_playDate());
-					pstmt.setString(8, dto.getM_explain());
-					pstmt.setDouble(9, dto.getM_grade());
-					pstmt.setDouble(10, dto.getM_reservationRate());
-					pstmt.setString(11, dto.getM_num());
+					pstmt.setString(7, dto.getM_img());
+					pstmt.setString(8, dto.getM_playDate());
+					pstmt.setString(9, dto.getM_explain());
+					pstmt.setDouble(10, dto.getM_grade());
+					pstmt.setDouble(11, dto.getM_reservationRate());
+					pstmt.setString(12, dto.getM_num());
 					
 					// 4. sql실행
 					pstmt.executeUpdate();

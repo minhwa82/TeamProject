@@ -11,7 +11,7 @@ import booking.db.BookingDAO;
 import booking.db.BookingDTO;
 import member.db.MemberDAO;
 import member.db.MemberDTO;
-import movie.db.MovieDTO;
+import movie.main.db.MovieDTO;
 import screen.db.ScreenDTO;
 import time.db.TimeDTO;
 

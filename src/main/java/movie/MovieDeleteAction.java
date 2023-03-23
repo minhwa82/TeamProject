@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import movie.db.MovieDAO;
+import movie.main.db.MovieDAO;
 
 public class MovieDeleteAction implements Action {
 
@@ -19,7 +19,7 @@ public class MovieDeleteAction implements Action {
 		
 		System.out.println(M_num);
 		ActionForward forward = new ActionForward();
-		forward.setPath("./AdminMovieList.mv");
+		forward.setPath("./AdminMovieList.mm");
 		forward.setRedirect(true);
 		
 		return forward;
