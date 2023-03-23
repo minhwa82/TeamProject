@@ -2,96 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
-<!-- Jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<script type="text/javascript">
-	$(function(){
-		
-		$('#menu > li').mouseenter(function(){
-				console.log("mouseenter@@@@@@@@");
-				
-			var menu_i = $(this).index();
-			console.log("@@@@@"+menu_i);
-			
-			if(menu_i == 2){
-				//alert(menu_i);
-				$('.menu_pan').css({
-					display:'none'
-				}).eq($(this).index()-3).css({
-					display:'block'
-				});
-// 				console.log("this"+$(this).index());
-// 				console.log(" menu_pan :" + $('.menu_pan').index()-3);
-			}
-			
-			 else {
-				$('#menu > li').mouseleave(function(){
-					$('.menu_pan').eq($(this).index()-3).css({
-						display:'none'
-					});
-				})
-			}  
-			
-			
-		
-		});
-		
-		/*  $('#menu > li').mouseleave(function(){
-			$('.menu_pan').eq($(this).index()-3).css({
-				display:'none'
-			});
-		});  */
-		
-		   /* $('#menu > li').mouseleave(function(){
-			
-			var menu_i = $(this).index();
-					console.log("mouseleave@@@@@@@@");
-			
-			if(!(menu_i == 2)){
-// 			if(menu_i <4){
-				console.log("mouseleave@@@@@@@@ : "+ menu_i );
-// 				console.log("mouseleave@@@@@@@@ : "+ $(this).index() );
-			
-				$('.menu_pan').eq($(this).index()-3).css({
-					display:'none'
-				});
-			}
-		});    */
-		
-		  
-		$('.menu_pan').mouseenter(function(){
-			$('.menu_pan').eq($(this).index()-3).css({
-				display:'block'
-			});
-		});
-		$('.menu_pan').mouseleave(function(){
-			$('.menu_pan').eq($(this).index()-3).css({
-				display:'none'
-			});
-		});
-		
-	});
 
-</script>
-<!-- Jquery  -->
-<nav class="main-nav overlay clearfix">
-	<a class="blog-logo" href="./Main.mv"><img src="" alt="Hello Movie"/></a>
-	<ul id="menu">
-		<li class="nav-home nav-current" role="presentation"><a href="./MovieList.mv">영화</a></li>
-		<li class="nav-article-example" role="presentation"><a href="./Booking.bk">예매</a></li>
-		<li class="nav-about-us" role="presentation"><a href="#">극장</a>
-		
-		</li>
-		<li class="nav-author-page" role="presentation"><a href="Bonus.mv">혜택</a></li>
-		<span class="socialheader">
-		<a href="Login.mv"><li class='nav-home nav-current'>로그인</li></a>
-		
-	<%
-	  String id = (String)session.getAttribute("id");
-  	  if(id != null){
-  	  if(id.equals("admin")){
-  	%>
-		<a href="MyPageMain.mv"><li class='nav-home nav-current'>마이페이지</li></a>
 		<a href="*.mv"><li class='nav-home nav-current' >예매 목록</li></a>
 		<a href="*.mv"><li class='nav-home nav-current' >로그아웃</li></a>
 		<%
@@ -99,6 +10,7 @@
   	  }
   	%>
 		
+
 	<%
   	  if(id != null){
   	  if(id.equals("admin")){
