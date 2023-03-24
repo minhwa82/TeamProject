@@ -12,9 +12,9 @@
 <nav class="main-nav overlay clearfix">
 	<a class="blog-logo" href="./Main.mm"><img src="assets/img/logo.png" alt="Fashion Critiques"/></a>
 	<ul id="menu">	
-		<li class="nav-home nav-current"><a href="MovieList.mv">영화</a></li>
-		<li class="nav-article-example"><a href="MovieBooking.mv">예매</a></li>
-		<li class="nav-about-us"><a href="CinemaPlace.mv">극장</a></li>
+		<li class="nav-home nav-current"><a href="movieList.mv">영화</a></li>
+		<li class="nav-article-example"><a href="Booking.bk">예매</a></li>
+		<li class="nav-about-us"><a href="">극장</a></li>
 		<li class="nav-author-page" role="presentation"><a href="Bonus.me">혜택</a></li>
 		
 	<span class="socialheader">

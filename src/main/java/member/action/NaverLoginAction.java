@@ -47,7 +47,7 @@ public class NaverLoginAction implements Action{
 
 				HttpSession session = request.getSession();
 				session.setAttribute("id", Mem_id);
-				forward.setPath("./Main.me");
+				forward.setPath("./Main.mm");
 				forward.setRedirect(true);		
 							
 				return forward;	
@@ -58,7 +58,7 @@ public class NaverLoginAction implements Action{
 				HttpSession session = request.getSession();
 				session.setAttribute("id", Mem_id);
 				
-				forward.setPath("./Main.me");
+				forward.setPath("./Main.mm");
 				forward.setRedirect(true);
 				System.out.println(" 네이버 아이디는 @@@@@@@@@@@@@ : " + Mem_id);
 				

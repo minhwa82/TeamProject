@@ -18,7 +18,8 @@ public class LogoutAction implements Action {
 		// 페이지 이동 -> main 페이지
 		// 1. 컨트롤러 사용 O
 		ActionForward forward = new ActionForward();
-		forward.setPath("./Main.me");
+		
+		forward.setPath("./Main.mm");
 		forward.setRedirect(true);
 		return forward;
 				

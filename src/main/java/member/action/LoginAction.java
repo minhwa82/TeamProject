@@ -54,11 +54,20 @@ public class LoginAction implements Action {
 		session.setAttribute("Mem_num", dto.getMem_num());
 		System.out.println(dto);
 		
+		String referer = request.getHeader("Referer");
+		System.out.println(referer);
 		ActionForward forward = new ActionForward();
-		forward.setPath("./Main.me");
-		forward.setRedirect(true);
 		
-		return forward;
+		if (referer != null) {
+			response.sendRedirect("./Booking.bk");
+			
+			return null;
+			
+		} else {
+			forward.setPath("./Main.mm");
+			forward.setRedirect(true);
+			return forward;
+		}
 		
 	}
 	

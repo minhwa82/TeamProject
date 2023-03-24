@@ -17,23 +17,27 @@
 .membercard {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
     padding: 30px;
-    display: inline-flex;
     flex-direction: column;
     align-items: center;
-    width: 280px;
-    height:250px;
     background: #fff;
+    margin: 40px;
+	width: 60%;
+    text-align: center;
+    
+
 }
 
-.membercard .text{
+.text{
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    margin: 20px;
 }
 
-.membercard .text img{
+.user{
 	padding: 20px;
-    width:  90px;
+    width:  110px;
     height: 90px;
     border-radius: 50%;
     margin-bottom:10px;
@@ -42,6 +46,7 @@
 .ticket {
 	display: inline-block;
 	margin-left: 50px ;
+
 }
 
 .btn-area button {
@@ -55,6 +60,16 @@
   font-size: 15px;
   cursor: pointer;
 }
+
+/* .bo {
+	margin: 20px;
+	width: 60%;
+	display: inline-flex;
+	align-items: center;
+    text-align: center;
+	
+} */
+
 
 </style>
 </head>
@@ -83,18 +98,17 @@
 	<article class="post tag-fashion tag-art page">
 	<section class="post-content">
 		<!-- 프로필 -->
-		<div class="membercard">
+
+		<img src="./img/user.png" class="user">
 			<div class="text">
-				<img src="./img/user.png">
 				<h3>${dto.mem_name}님 </h3> 
 				<h4> ${dto.mem_grade } 등급</h4>
 			</div>
-			<a href="MemberInfo.me">회원 정보</a>
-		</div>
+
 		<!-- 프로필 -->
 	
 		<!-- totalList 순서 : bdto, mvdto, scdto, tdto -->
-		<div class="ticket">
+		<div class="ticket" >
 		
 			<!-- 예매 내역 없을 경우 -->
 		    <c:if test="${empty totalList }">
@@ -103,20 +117,22 @@
 					<button id="btn" type="submit" onclick="#">예매 바로가기</button>
 				</div>
 			</c:if>
+		</div>	
 			
 			<c:forEach var="s" items="${totalList}">
-				예매번호: ${s[0].b_booking_num}
-				<h2> ${s[1].m_name } </h2>
-				${s[2].sc_name } <br>
-				${s[3].t_startTime } <br>
-				좌석 번호 : ${s[0].s_num} <br>
-				청소년 : ${s[0].youth_num}명 /
-				성인 : ${s[0].adult_num}명 <br>
+			
+				<div class="membercard">
+					예매번호: ${s[0].b_booking_num}
+					<h2> ${s[1].m_name } </h2>
+					${s[2].sc_name } <br>
+					${s[3].t_startTime } <br>
+					좌석 번호 : ${s[0].s_num} <br>
+					청소년 : ${s[0].youth_num}명 /
+					성인 : ${s[0].adult_num}명
+				</div>
+
 			</c:forEach>
 			
-		</div>
-
-
     </section>
 	</article>
 	</main> 

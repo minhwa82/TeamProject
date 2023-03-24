@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,14 +26,33 @@ href="https://fonts.googleapis.com/css?family=Roboto:400,300italic,300,400italic
 /*global $, document, window, setTimeout, navigator, console, location*/
 $(document).ready(function () {
 
+
+	
+	var mType =
+			["${dto.mem_mType.split(',')[0] }",
+			"${dto.mem_mType.split(',')[1] }",
+			"${dto.mem_mType.split(',')[2] }"];	
+	
+ 
+	for(var i=0; i<mType.length; i++){
+		  $('input:checkbox[name=type]').each(function(){
+		    if(this.value == mType[i]){
+		    this.checked = true;
+		    }
+		  });
+		}
+	
+	
+
+
     'use strict';
 	
-     var usernameError = true,
+     var usernameError = false, 
         emailError    = true,
         emailCodeError= true,
         passwordError = true,
         passConfirm   = true,
-    	idError 	  = true,
+    	idError 	  = false,
    		bir_yyError   = true,
     	bir_ddError   = true,
 	    phoneError    = false,
@@ -52,6 +72,7 @@ $(document).ready(function () {
     
 	var error;
     
+	
     
 
     
@@ -138,7 +159,7 @@ $(document).ready(function () {
         
         
         // id
-        if ($(this).hasClass('id')) {
+      /*   if ($(this).hasClass('id')) {
         	
         	   if ($(this).val().length === 0) {
                    $(this).siblings('span.error').text('아이디를 입력하세요.').fadeIn().parent('.form-group').addClass('hasError');
@@ -154,7 +175,7 @@ $(document).ready(function () {
 			       		 } else {
 				            $.ajax({
 							//url:"./IdCheckAction",
-							url:"./MemberJoinCheckAction.me",
+							url:"./MemberJoinCheckAction.mj",
 							type:"post",
 						 	data:{mem_id:mem_id},
 							//dataType:"text",
@@ -166,6 +187,7 @@ $(document).ready(function () {
 						 			 //console.log("값이 1임")
 						             $(".id").siblings('span.error').text('사용중인 아이디입니다.').fadeIn().parent('.form-group').addClass('hasError');
 						             idError = true;
+						
 						 		 } else {
 						 			$(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
 						 			 idError = false;
@@ -186,7 +208,7 @@ $(document).ready(function () {
 			        	 }
 			        }
 			    }
-
+ */
 
 
 
@@ -195,14 +217,19 @@ $(document).ready(function () {
         // Email
         // https://jh91.tistory.com/entry/javescript-%EC%9D%B4%EB%A9%94%EC%9D%BC-%EC%9C%A0%ED%9A%A8%EC%84%B1-%EA%B2%80%EC%82%AC
         if ($(this).hasClass('email')) {
-        	   if ($(this).val().length === 0) {
+        	 
+        	if ($(this).val().length === 0) {
         		   
                    $('.emailCode').siblings('span.error').text('이메일을 입력하세요.').fadeIn().parent('.form-group').addClass('hasError');
                    emailError = true;
-        	   }else if ($(this).val().length > 0) {
+                   
+        	}else if ($(this).val().length > 0) {
             	 var regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
             	 var mem_email = $(this).val()
             	 if(regEmail.test($(this).val())){
+            		
+            		 
+            		 
             		 $.ajax({
             				
             				url:"./MemberJoinCheckAction.me",
@@ -214,9 +241,15 @@ $(document).ready(function () {
             					console.log(data);
             					
             		 		 if(data==1){
-            		 			 console.log("zz")
+            		 			 //console.log("zz")
+            		 			 if($('.email').val()=="${dto.mem_email}") { // 기존 이메일과 같을 경우 emailError false
+			            		 console.log('기존과 같음');
+			            		 $('.emailCode').siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+			                     emailError = false
+			        	 		  } else {
             		             $('.emailCode').siblings('span.error').text('사용중인 이메일입니다.').fadeIn().parent('.form-group').addClass('hasError');
-            		             emailError = true;
+            		 			 emailError = true;
+			        	 		  }
             		 		 } else {
             		 			$('.emailCode').siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
             		 			 emailError = false;
@@ -232,13 +265,16 @@ $(document).ready(function () {
                 $('.emailCode').siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
                 emailError = false;
    
-         	
+            	
+            	 
         	
-            } else {
+            	 } else {
                 $('.emailCode').siblings('span.error').text('이메일 주소를 다시 확인해주세요.').fadeIn().parent('.form-group').addClass('hasError');
                 emailError = true;
-            }
-            }
+            	 }
+        	
+        	   
+        	   }  
         }
         
 			    
@@ -366,9 +402,15 @@ $(document).ready(function () {
          					console.log(data);
          					
          		 		 if(data==1){
-         		 			 console.log("zz")
-         		             $(".phone3").siblings('span.error').text('등록된 번호입니다.').fadeIn().parent('.form-group').addClass('hasError');
-         		             phoneError = true;
+         		 			 
+            		 		 if(phone=="${dto.mem_phone}") { // 기존 이메일과 같을 경우 emailError false
+			            	 console.log('기존과 같음');
+			            	 $('.phone3').siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+			                  phoneError = false
+			        	 	  } else {         		 			 
+	         		            $(".phone3").siblings('span.error').text('등록된 번호입니다.').fadeIn().parent('.form-group').addClass('hasError');
+	         		            phoneError = true;
+			        	 	  }
          		 		 } else {
          		 			$(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
          		 			 phoneError = false;
@@ -457,8 +499,9 @@ $(document).ready(function () {
 
  // Form submit
      $('form.signup-form').submit(function (event) {
-    	 $('.id, .email, .emailCode, .pass, .passConfirm, .phone3, .bir_yy, .bir_dd, .type').blur();
+       
         
+    	 $('.id, .email, .emailCode, .pass, .passConfirm, .phone3, .bir_yy, .bir_dd, .type').blur();
         
     var ErrorArray =
     	[idError,
@@ -473,11 +516,12 @@ $(document).ready(function () {
         typeError];
     for(var i=0; i<ErrorArray.length; i++) {
     	
-        console.log(i+"번째 에러"+ErrorArray[i]);
-        if(ErrorArray[i]==true) {
-     	   return false;
-        }
-    };
+       console.log(i+"번째 에러"+ErrorArray[i]);
+       if(ErrorArray[i]==true) {
+    	   return false;
+       }
+    
+    }
     
     
            
@@ -485,14 +529,13 @@ $(document).ready(function () {
            if(error==true){
         	   event.preventDefault();
           console.log(error);
-          $('.id, .email, .emailCode, .pass, .passConfirm, .phone3, .bir_yy, .bir_dd, .type').blur();
+        	$('.id, .name, .email, .emailCode, .pass, .passConfirm, .phone3, .bir_yy, .bir_dd, .type').blur();
             //console.log("에러있음"+ErrorTrue);
 /*         	  for(var i=0; i<ErrorArray.length; i++) {
               	console.log(i+"번째 에러"+ErrorArray[i]);
               }; */
             
-         }
-        
+         } 
         
           
           /* else {
@@ -518,10 +561,8 @@ $(document).ready(function () {
 
 </script>
 </head>
-
+<body>
 <jsp:include page="../inc/top.jsp"/>
-
-
 <!-- 
 <div class="container">
    <section id="formHolder">
@@ -571,10 +612,10 @@ $(document).ready(function () {
 
  -->
             <!-- Signup Form -->
-            <div class="signup form-peice" ><!--  -->
-               <form class="signup-form" action="./MemberJoinAction.me" method="post">
+            <div class="signup form-peice" >
+               <form class="signup-form" action="./MemberUpdateProAction.me" method="post">
 				
-				<h1> 회원가입 </h1>
+				<h3> ${id }님 회원정보수정 </h3>
 				<!-- 회원번호 -->
 	<!-- 			 <input type="hidden" name="num" value="0" >
 				<input type="hidden" name="grade" value="normal" >
@@ -583,7 +624,7 @@ $(document).ready(function () {
 				
                   <div class="form-group">
                      <label for="userId">아이디</label><br>
-                     <input type="text" name="mem_id" id="id" class="id" maxlength="20"><br>
+                     <input type="text" name="mem_id" id="id" class="id" maxlength="20" value="${id }" readonly><br>
                      <span class="error"></span>
                   </div>
                   
@@ -599,18 +640,13 @@ $(document).ready(function () {
                      <span class="error"></span>
                    </div>
                    
-                   
-                  <div class="form-group">
-                     <label for="name">이름</label><br>
-                     <input type="text" name="mem_name" id="name" class="name"><br>
-                     <span class="error"></span>
-                  </div>
-
+    
+ 
 
                   <div class="form-group">
                      <label for="email">이메일</label><br>
                      <div class="group">
-                     <input type="email" name="mem_email" id="email" class="email" placeholder="">
+                     <input type="email" name="mem_email" id="email" class="email" placeholder="" value="${dto.mem_email }">
                      <input type="button" value="본인인증" id="sendEmail" class="sendEmail"><br>
                      <span class="error"></span>
                      </div>
@@ -621,14 +657,19 @@ $(document).ready(function () {
                  <div class="form-group">
                      <label for="birth">생년월일</label><br>
                      <div class="group">
-	      				 <input class="bir_yy" type="text" name="year" id="year" maxlength="4" placeholder="년(4자)">
+	      				 <input class="bir_yy" type="text" name="year" id="year" maxlength="4" placeholder="년(4자)" value="${dto.mem_birth.split('-')[0] }">
 	                     <select class="bir_mm" name="month" id="month">
 	                     <option value="0">월</option>
-	                   	   <c:forEach var="mon" begin="1" end="12" step="1">
-	                    	   <option value="${mon }">${mon }</option>
+	                   	    <c:forEach var="mon" begin="1" end="12" step="1">
+	                    	   <option value="${mon }"
+	                    	  <c:if test="${mon==dto.mem_birth.split('-')[1] }">
+	                    	    selected
+	                    	    </c:if>
+	                    	    >${mon }</option>
+
 	                       </c:forEach>
-	                     </select>
-	                     <input class="bir_dd" type="text" name="day" id="day" maxlength="2" placeholder="일" ><br>
+	                       </select>
+	                     <input class="bir_dd" type="text" name="day" id="day" maxlength="2" placeholder="일" value="${dto.mem_birth.split('-')[2] }"><br>
 	                 	 <span class="error"></span>
               		</div>
                   </div>
@@ -641,38 +682,41 @@ $(document).ready(function () {
                    <div class="form-group">
                      <label for="phone">휴대폰 번호</label><br>
                      <div class="group">
-                     <input type="text" name=phone1 class="phone1" maxlength="3"> -
-                     <input type="text" name=phone2 class="phone2" maxlength="4"> -
-                     <input type="text" name=phone3 class="phone3" maxlength="4">
+                     <input type="text" name=phone1 class="phone1" maxlength="3" value="${dto.mem_phone.split('-')[0] }"> -
+                     <input type="text" name=phone2 class="phone2" maxlength="4" value="${dto.mem_phone.split('-')[1] }"> -
+                     <input type="text" name=phone3 class="phone3" maxlength="4" value="${dto.mem_phone.split('-')[2] }">
                      <span class="error"></span>
                      </div>
                   </div>
                  	
                  
-                  
+     
                   
 				                   
                   <div class="form-group">
                      <label for="addr_num">주소</label>
                      <div class="group">
-                     <input type="text" id="postcode" name="postcode" placeholder="우편번호" />
+                     <input type="text" id="postcode" name="postcode" placeholder="우편번호" value="${dto.mem_postcode }"/>
                      <input type="button" onclick="DaumPostcode()" value="우편번호 찾기"><br>
                      </div>
                  <!--     <label for="addr">주소</label> -->
-                     <input type="text" id="address" name="mem_addr" placeholder="주소"/><br>
+                     <input type="text" id="address" name="mem_addr" placeholder="주소" value="${dto.mem_addr1 }"/><br>
                     <!--  <label for="addr_detail">상세주소</label> -->
                     <div class="group">
-                     <input type="text" id="detailAddress" name="detailAddress" placeholder="상세주소" />
-                     <input type="text" id="sample6_extraAddress" name="extraAddress" placeholder="참고항목">
+                     <input type="text" id="detailAddress" name="detailAddress" placeholder="상세주소" value="${dto.mem_addr2 }"/>
+                     <input type="text" id="sample6_extraAddress" name="extraAddress" placeholder="참고항목" value="${dto.mem_addr3 }">
                      <span class="error"></span>
                     </div>
                   </div>
-                
                
-                  
+              
+            
+              
                   <div class="form-group">
                      <label for="type">좋아하는 장르  </label>  <small>(최대 3개 선택가능)</small> <br>
                    <table class="typeTable">
+                 
+       
                     <tr>
                     	<td><input type="checkbox" name="type" class="type" value="Thriller"> 공포</td>
 	                    <td><input type="checkbox" name="type" class="type" value="Romance"> 로맨스</td>
@@ -693,16 +737,20 @@ $(document).ready(function () {
 	                    <td><input type="checkbox" name="type" class="type" value="Action"> 액션</td>
 	                    <td><input type="checkbox" name="type" class="type" value="Noir""> 누와르</td>
                      </tr>
+                     <tr>
 	                    <td><input type="checkbox" name="type" class="type" value="Drama"> 드라마</td>
+                    </tr>
                      </table>
+                     	
+                  	<%-- </c:forEach> --%>
                      <span class="error"></span>
                   </div>
               
 
 
 
-                  <div class="CTA">
-                     <input type="submit" value="회원가입" id="submit">
+                       <div class="CTA">
+                     <input type="submit" value="회원정보 수정" id="submit">
                   
                   </div>
                   

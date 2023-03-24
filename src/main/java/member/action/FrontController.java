@@ -49,6 +49,68 @@ public class FrontController extends HttpServlet{
 			forward.setPath("./member/insertForm.jsp");
 			forward.setRedirect(false);
 		} 
+		else if (command.equals("/MemberJoinAction.me")) {
+			System.out.println(" c : /MemberJoinAction.me 호출");
+			
+			//패턴2
+			// 객체 생성 MemberJoinAction
+			//MemberJoinAction m = new MemberJoinAction();
+			action = new MemberJoinAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		} else if(command.equals("/SendEmailAction.me")) {
+			System.out.println(" c : /SendEmailAction.me 호출");
+			action = new SendEmailAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else if(command.equals("/MemberJoinCheckAction.me")) {
+			System.out.println(" c : /SMemberJoinCheckAction.me 호출");
+			action = new MemberJoinCheckAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else if(command.equals("/MemberUpdate.me")) {
+			System.out.println(" C : /MemberUpdate.me 호출");
+			System.out.println(" C : DB사용O, view O ");
+			// 패턴 3
+			// MemberUpdateAction 객체 생성
+			action = new MemberUpdateAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
+		else if(command.equals("/MemberUpdateProAction.me")) {
+			System.out.println(" C : /MemberUpdateProAction.me 호출 ");
+			System.out.println(" C : DB사용 O,view 페이지이동 ");
+			// 패턴2
+			// MemberUpdateProAction() 객체 생성
+			action = new MemberUpdateProAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 		else if(command.equals("/Main.me")) {
 			System.out.println(" C : /Main.me 호출");
@@ -148,16 +210,16 @@ public class FrontController extends HttpServlet{
 				e.printStackTrace();
 			}				
 		}
-		else if(command.equals("/MyTicket.me")) {
-			
-			action = new MyTicketAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		}
+//		else if(command.equals("/MyTicket.me")) {
+//			
+//			action = new MyTicketAction();
+//			try {
+//				forward = action.execute(request, response);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			
+//		}
 		else if(command.equals("/MyPage.me")) {
 			System.out.println(" C : /MyPage.me 호출! ");
 			

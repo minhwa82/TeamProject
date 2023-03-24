@@ -42,6 +42,179 @@ public class MemberDAO {
 		}
 	}
 			
+	// 회원가입 - insertMember(dto)
+		public void insertMember(MemberDTO dto) {
+			try {
+				// 1,2 디비연결
+				con = getCon();
+				// 3 sql 작성 & pstmt 객체
+
+				sql = "insert into member(mem_name, mem_id, mem_pw, mem_phone, mem_birth, mem_postcode, mem_addr1, mem_addr2, mem_addr3, mem_email, mem_mType) "
+						+ "values(?,?,?,?,?,?,?,?,?,?,?);";
+				pstmt = con.prepareStatement(sql);
+				
+				// ???
+				pstmt.setString(1, dto.getMem_name());
+				pstmt.setString(2, dto.getMem_id());
+				pstmt.setString(3, dto.getMem_pw());
+				pstmt.setString(4, dto.getMem_phone());
+				pstmt.setString(5, dto.getMem_birth());
+				pstmt.setString(6, dto.getMem_postcode());
+				pstmt.setString(7, dto.getMem_addr1());
+				pstmt.setString(8, dto.getMem_addr2());
+				pstmt.setString(9, dto.getMem_addr3());
+				pstmt.setString(10, dto.getMem_email());
+				pstmt.setString(11, dto.getMem_mType());
+				
+				// 4 sql 실행		
+				pstmt.executeUpdate();
+				System.out.println(" DAO : 회원가입 성공! ");
+				
+				
+			} catch (Exception e) {
+				System.out.println(" DAO : 회원가입 실패! ");
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+		}
+		
+		
+		//아이디,이메일,폰번호 중복검사
+			public int check(String mem, String value) {
+				
+				//System.out.println(mem+","+value);
+				
+				//boolean check = false;
+				int check = 0;
+				try {
+					//DBMS 연결 객체 가져오기
+					con = getCon();
+					//String으로 선언된 쿼리를 pstm객체에 전달하기
+					sql = "SELECT count(Mem_id) FROM member WHERE "+mem+" = ?";
+					pstmt = con.prepareStatement(sql);
+					//SQL 쿼리에 ?가 있다면 알맞는 값으로 지정해주기
+					pstmt.setString(1, value);
+					//쿼리 실행 후 결과를 rs객체에 담기
+					rs = pstmt.executeQuery();
+					System.out.println(rs);
+					//행가져오기
+					rs.next();
+					//위에서 가져온 행의 열을 타입에 맞춰서 가져오기
+					//check = rs.getInt(1) == 1;	//0일 때 중복 없음(false), 1일 때 중복 있음(true)
+					check = rs.getInt(1); // 1일때 중복있음
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					closeDB();
+				}
+				return check;
+			}
+		
+		//
+		
+		// 회원정보 조회
+		public MemberDTO getMemberInfo(String id){
+			MemberDTO dto = null;
+			// 디비 -> 회원정보 가져오기
+			try {
+				// 1. 드라이버 로드
+				// 2. 디비연결
+				con = getCon();
+				// 3. SQL 작성(select) & pstmt 객체
+				sql = "select Mem_id,Mem_pw, Mem_email, Mem_birth, Mem_phone, Mem_postcode, Mem_addr1, Mem_addr2, Mem_addr3, Mem_mType from member "
+						+ " where Mem_id=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				// 4. SQL 실행
+				rs = pstmt.executeQuery();
+				// 5. 데이터 처리
+				// 화면에 출력X ->  출력정보 저장 (리턴) 
+				if(rs.next()){
+					dto = new MemberDTO();
+					
+					dto.setMem_id(rs.getString("Mem_id"));
+					dto.setMem_pw(rs.getString("Mem_pw"));
+					dto.setMem_email(rs.getString("Mem_email"));
+					dto.setMem_birth(rs.getString("Mem_birth"));
+					dto.setMem_phone(rs.getString("Mem_phone"));
+					dto.setMem_postcode(rs.getString("Mem_postcode"));
+					dto.setMem_addr1(rs.getString("Mem_addr1"));
+					dto.setMem_addr2(rs.getString("Mem_addr2"));
+					dto.setMem_addr3(rs.getString("Mem_addr3"));
+					dto.setMem_mType(rs.getString("Mem_mType"));
+
+				}
+				
+				System.out.println(" DAO : 회원정보 조회 성공! ");
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return dto;
+		}	
+		// 회원정보 조회
+
+		
+		// 회원정보 수정 updateMember(dto)
+					public int updateMember(MemberDTO dto) {
+						int result = -1;
+						try {
+							//1.2 디비연결
+							con = getCon();
+							//3. sql 구문 & pstmt
+							sql = "select Mem_id from member where Mem_id=?";
+							pstmt = con.prepareStatement(sql);
+							pstmt.setString(1, dto.getMem_id());
+							
+							//4. sql 실행
+							rs = pstmt.executeQuery();
+							
+							//5. 데이터처리 (수정)
+							if(rs.next()) {
+								
+								if(dto.getMem_id().equals(rs.getString("Mem_id"))) {
+									//3 sql (수정)
+									sql = "update member set Mem_pw=?, Mem_email=?, Mem_birth=?, Mem_phone=?, Mem_postcode=?, Mem_addr1=?, Mem_addr2=?, Mem_addr3=?, Mem_mType=? where Mem_id=?";
+									pstmt = con.prepareStatement(sql);
+									
+									pstmt.setString(1, dto.getMem_pw());
+									pstmt.setString(2, dto.getMem_email());
+									pstmt.setString(3, dto.getMem_birth());
+									pstmt.setString(4, dto.getMem_phone());
+									pstmt.setString(5, dto.getMem_postcode());
+									pstmt.setString(6, dto.getMem_addr1());
+									pstmt.setString(7, dto.getMem_addr2());
+									pstmt.setString(8, dto.getMem_addr3());
+									pstmt.setString(9, dto.getMem_mType());
+									pstmt.setString(10, dto.getMem_id());
+									
+									result = pstmt.executeUpdate();
+									
+								}else {
+									result = 0;
+								}
+								
+							}else {
+								result = -1;
+							}
+							
+						} catch (Exception e) {
+							e.printStackTrace();
+					    } finally {
+							closeDB();
+						}
+						
+						
+						return result;
+					}	
+					// 회원정보 수정 updateMember(dto)
+			
 	// 일반 로그인 - loginMember(MemberDTO dto)
 	/* public int loginMember(MemberDTO dto) {
 			
@@ -296,7 +469,7 @@ public class MemberDAO {
 	} // getMemberInfo(String Mem_id)
 	
 	// 등급 조회 - memberInfo(String Mem_id)
-	public MemberDTO getMemberInfo(String Mem_id){
+	public MemberDTO getGradeInfo(String Mem_id){
 			
 		MemberDTO dto = null;
 			

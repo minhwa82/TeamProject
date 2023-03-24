@@ -8,11 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import booking.db.BookingDAO;
-import booking.db.BookingDTO;
 import member.db.MemberDAO;
 import member.db.MemberDTO;
 import movie.main.db.MovieDTO;
+import project.moive.booking.db.BookingDAO;
 
 public class MyPageAction implements Action {
 
@@ -29,7 +28,7 @@ public class MyPageAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		if(id == null) { // 로그인 안 됐을때
-			forward.setPath("./Login.me");
+			forward.setPath("./Login.mm");
 			forward.setRedirect(true);
 			return forward;
 		}

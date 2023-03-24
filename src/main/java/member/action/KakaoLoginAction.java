@@ -54,7 +54,7 @@ public class KakaoLoginAction implements Action{
 	
 				HttpSession session = request.getSession();
 				session.setAttribute("id", dto.getMem_id());
-				forward.setPath("./Main.me");
+				forward.setPath("./Main.mm");
 				forward.setRedirect(true);		
 							
 				return forward;	
@@ -68,7 +68,7 @@ public class KakaoLoginAction implements Action{
 				session.setAttribute("dto", dto);	
 				session.setAttribute("Mem_num", dto.getMem_num());
 
-				forward.setPath("./Main.me");
+				forward.setPath("./Main.mm");
 				forward.setRedirect(true);
 				System.out.println(" 카카오 아이디는 @@@@@@@@@@@@@ : " + Mem_id);
 				

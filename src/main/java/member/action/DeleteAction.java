@@ -22,7 +22,7 @@ public class DeleteAction implements Action {
 	
 		ActionForward forward = new ActionForward();
 		if(id == null){
-			forward.setPath("./Login.mv");
+			forward.setPath("./Login.me");
 			forward.setRedirect(true);
 			return forward;
 		}
@@ -63,7 +63,7 @@ public class DeleteAction implements Action {
 		
 		out.print("<script>");
 		out.print("alert('회원탈퇴 성공');");
-		out.print("location.href='./Main.me';");
+		out.print("location.href='./Main.mm';");
 		out.print("</script>");
 		out.close();
 		return null;

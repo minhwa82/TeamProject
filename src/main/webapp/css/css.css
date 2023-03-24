@@ -1,0 +1,237 @@
+@charset "UTF-8";
+html{
+	 height: 1700px !important;
+	 max-height: none;
+}
+
+body {
+ font-family: "Montserrat", sans-serif;
+ background: rgb(255, 255, 255);
+/*  width: 400px; */  
+ justify-content: center;
+
+  align-items: center;
+ 
+
+}
+
+/* .container {
+ max-width: 900px;
+} */
+
+a {
+ display: inline-block;
+ text-decoration: none;
+}
+
+input {
+ outline: none !important;
+}
+
+h1 {
+ text-align: center;
+ text-transform: uppercase;
+ margin-bottom: 40px;
+ font-weight: 700;
+}
+
+h3{
+	 text-align: center;
+}
+
+
+
+.form .form-peice {
+/*  background: #fff;
+ color: #bbbbbb;
+ padding: 30px 0 60px;
+ transition: all 0.9s cubic-bezier(1, -0.375, 0.285, 0.995);
+ position: absolute;
+ top: 0;
+ left: 50%;
+ width: 130%;
+ min-height: 480px;
+ overflow: hidden; */
+   margin-top: 150px;
+/*  margin-bottom: 5%;  */
+
+/*  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  */
+/*  padding: 0px 10px 60px; */
+ 	position:absolute;
+	top: 70%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	
+	
+	min-height: 300px;
+	box-shadow: 20px 20px 80px rgb(218, 218, 218);
+	border-radius: 8px;
+    margin-bottom:  6em; 
+    padding: 30px; 
+}
+
+/*
+.form .form-peice.switched {
+ transform: translateX(-100%);
+ width: 100%;
+ left: 0;
+}
+*/
+/* .form form {
+ padding: 0 40px;
+ margin: 0;
+ width: 70%;
+ position: absolute;
+ top: 50%;
+ left: 60%;
+ transform: translate(-50%, -50%); 
+
+}  */
+ 
+
+
+
+.form form .form-group {
+ margin-bottom: 10px;
+ position: relative;
+ /* 이 밑으로 내가 추가 (!) */
+ width: 400px;
+/*  height: 75px; */
+ padding: 5px;
+ color: #444;
+}
+.form form .form-group.hasError input {
+/*  border-color: #f95959 !important; */
+/*  border-color: #444 !important;  */
+
+
+}
+.form form .form-group.hasError label {
+/*  color: #f95959 !important; */
+
+}
+.form form label {
+/*  font-size: 12px; */
+ font-weight: 400;
+ text-transform: uppercase;
+ font-family: "Montserrat", sans-serif;
+ transform: translateY(40px);
+ transition: all 0.4s;
+ cursor: text;
+ z-index: -1;
+ 
+}
+.form form label.active {
+ transform: translateY(10px);
+/*  font-size: 10px; */
+}
+.form form label.fontSwitch {
+ font-family: "Raleway", sans-serif !important;
+ font-weight: 600;
+}
+
+
+
+.form form input:not([type=submit]), #month {
+ background: none;
+ outline: none;
+/*  border: none; */
+/*  border: 1px; */
+/*  display: block; */ /*  (!) */
+ padding: 8px 0; 
+ width: 100%; 
+/*  border-bottom: 1px solid #eee; */
+ border: 1px solid #eee;
+ border-radius: 5px;
+ color: #444;
+ font-size: 15px;
+ font-family: "Montserrat", sans-serif;
+ z-index: 1;
+ margin-top: 10px;
+
+}   
+
+.form form input.type{
+	width:20px;
+	padding: 10%;
+}
+
+#sendEmail{
+ padding: 8px 0; 
+ width: 40%;
+ border: 1px solid #eee;
+ background: none;
+ outline: none;
+ border-radius: 5px;
+ color: #444;
+ font-size: 15px;
+ font-family: "Montserrat", sans-serif;
+
+}
+
+.form form .form-group .group {
+ width: 100%;
+ display: inline-flex;
+} 
+
+#year, #month, #email, #postcode, #detailAddress{
+
+    margin-right: 10px;
+
+}
+
+
+/*  .bir_mm+.bir_dd, .bir_yy+.bir_mm {
+    padding-left: 10px;
+} 
+ */
+
+.form form input:not([type=submit]).hasError {
+  border-color: #f95959;
+}
+.form form span.error {
+ color: #f95959;
+ font-family: "Montserrat", sans-serif;
+ font-size: 12px;
+position: absolute;
+ bottom: -20px;
+ right: 0;
+ display: none;
+}
+.form form input[type=password] {
+ color: #f95959;
+}
+.form form .CTA {
+ margin-top: 30px;
+ width: 100%;
+ /* display: inline-flex; */
+}
+.form form .CTA input {
+ width: 100%;
+ font-size: 12px;
+ text-transform: uppercase;
+ padding: 5px 30px;
+ background: #f95959;
+ color: #fff;
+ border-radius: 30px;
+ margin-right: 20px;
+ border: none;
+ font-family: "Montserrat", sans-serif;
+}
+.form form .CTA #cancel {
+/*  font-size: 13px;
+ font-weight: 400px;
+ font-family: "Montserrat", sans-serif;
+ color: #bbbbbb;
+ text-decoration: underline;
+ transition: all 0.3s; */
+ 
+
+ background: #bbbbbb;
+
+
+}
+.form form .CTA a.switch:hover {
+ color: #f95959;
+}
+

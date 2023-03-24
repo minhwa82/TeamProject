@@ -31,7 +31,8 @@ integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7g
 
 <section class="login-form">
    <div class="panel border bg-white">
-        <h1>안영화세요</h1>
+  <!--s  <h1>안영화세요</h1>	-->
+    <img src="assets/img/logo2.png" width="150px" > 
         <form action="./LoginAction.me?" method="post">
         <input type="hidden" name="Mem_num" id="Mem_num">
         <input type="hidden" name="name" >
@@ -50,7 +51,7 @@ integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7g
         <div class="caption">
             <a href="./findPw.me" id="forgotPw">비밀번호 찾기</a>
             <a href="./findId.me" id="forgotId">아이디 찾기</a><br><br>
-            <a href="" id="">회원가입</a>
+            <a href="Join.me" id="">회원가입</a>
         </div>
         
         <div class="mx-3 my-2 py-2 bordert">
@@ -68,7 +69,7 @@ integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7g
 <!-- 네이버 로그인 관련 -->
 <script type="text/javascript">
 	  	var naver_id_login =
-	  		new naver_id_login("Rv8AbbtIDIKKhJ_g5wd4", "http://localhost:8080/Member/NaverLogin.me")
+	  		new naver_id_login("Rv8AbbtIDIKKhJ_g5wd4", "http://localhost:8080/TeamProject/NaverLogin.me")
 	  	var state = naver_id_login.getUniqState();
 	  	naver_id_login.setDomain("http://localhost8080/");
 	  	naver_id_login.setButton("green",3,40);

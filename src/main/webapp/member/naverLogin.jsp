@@ -16,11 +16,12 @@
 			
 <script type="text/javascript">
 var naver_id_login = 
-	new naver_id_login("Rv8AbbtIDIKKhJ_g5wd4", "http://localhost:8080/Member/NaverLoginAction.me")
+	new naver_id_login("Rv8AbbtIDIKKhJ_g5wd4", "http://localhost:8080/TeamProject/Main.mm")
 //접근 토큰 값 출력
 // alert(naver_id_login.oauthParams.access_token);
 //네이버 사용자 프로필 조회
 naver_id_login.get_naver_userprofile("naverSignInCallback()");
+
 //네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
 function naverSignInCallback() {
 	
@@ -30,11 +31,12 @@ function naverSignInCallback() {
 	var birthday = naver_id_login.getProfileData('birthday');
  	var mobile = naver_id_login.getProfileData('mobile');
 	
- 	alert(id);
- 	alert(email);
- 	alert(birthday);
- 	alert(name);
- 	alert(mobile);
+ 	// 확인용 alert임
+// 	alert(id);
+// 	alert(email);
+// 	alert(birthday);
+// 	alert(name);
+// 	alert(mobile);
 
 
  	$.ajax({
@@ -47,10 +49,12 @@ function naverSignInCallback() {
 			birthday:naver_id_login.getProfileData('birthday')
 // 			mobile:naver_id_login.getProfileData('mobile')
 		},
-/* 
+ 
+		// 로그인 성공 후 Main.mm 이동
 		success:function(){
-		location.href="./Main.me";
- 		}. */
+			location.href="./Main.mm";
+
+ 		},
  		
 		error:function(){
 		location.href="./Main.me";

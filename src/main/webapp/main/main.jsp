@@ -44,7 +44,7 @@ img{
  --%>	<div>
 	<h3>
 		<a href="#none" id="abc" style="text-decoration: none;"> 무비차트 </a>
-		<a href="./movieDetails.mv" id="abc" class="btn-gradient green mini" > 전체보기 </a>
+		<a href="./movieList.mv" id="abc" class="btn-gradient green mini" > 전체보기 </a>
 	</h3>
 		
 	</div>
