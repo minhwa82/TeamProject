@@ -12,19 +12,25 @@
 
 <style type="text/css">
 
+h1{
+ text-align: left; margin-left: 300px; margin-top: 200px;
+}
+table{
+  text-align: center; width: 800px; margin-left: 300px; margin-top: 100px;
+}
 
+th,td{ font-size: 10pt; border-bottom: 1px solid silver;
+  height: 20px;
 
-
-
+}
 </style>
 </head>
 <body>
 <jsp:include page="../inc/top.jsp"/>
 <jsp:include page="../inc/adminCenter.jsp"/>
-<div id="mainWrapper">
- <ul>
+
+
 <h1>1:1 문의</h1>
-  <li>
     
 	<table class=qnaT>
 		<tr style="background-color: white;">    
@@ -56,10 +62,17 @@
 			 </tr> 
 	    </c:forEach>
       </table>
-	  
+	  	     <%
+			  String id = (String)session.getAttribute("id");
+
+		  	  if(id != null){
+  	%>
 	      <div align="right" class="btn" value="글쓰기" onclick='location.href="./QnaWrite.qa"'>
 	      <button type="submit">글쓰기</button>
       </div>
+        	<%
+  	 		 	}
+  	%> 
 	
 
 	<div id="page_control">
@@ -77,13 +90,11 @@
 		</c:if>
 	</div>
 
-<!-- 게시판 -->
-<!-- 본문들어가는 곳 -->
-<div class="clear"></div>
+
 <!-- 푸터들어가는 곳 -->
 <footer>
 <hr>
-
+<jsp:include page="../inc/footer.jsp"/>
 </footer>
 <!-- 푸터들어가는 곳 -->
 

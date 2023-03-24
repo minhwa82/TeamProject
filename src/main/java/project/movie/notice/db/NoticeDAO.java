@@ -131,7 +131,7 @@ public class NoticeDAO {
 
 			return noticeList;
 		} 
-		
+
 		public List getNoticeListPage(int startRow, int pageSize) {
 
 			List noticeList = new ArrayList();
@@ -283,7 +283,6 @@ public class NoticeDAO {
 				
 			}
 		}
-	   
 		
 		// 게시판 글삭제 deleteNotice(dto)
 		public int deleteNotice(int No_num) {
@@ -306,7 +305,6 @@ public class NoticeDAO {
 			return result;
 		}
 
-
 		public List<NoticeDTO> searchNoticeList(String search,int startRow,int pageSize){
 			
 			List<NoticeDTO> searchList = new ArrayList<NoticeDTO>();
@@ -319,7 +317,7 @@ public class NoticeDAO {
 				//  페이징처리 limit 사이즈만큼 처리
 				
 				sql = "select * from notice "
-						+ " where No_title like ? ";
+						+ " where No_title like ?";
 				pstmt = con.prepareStatement(sql);
 				
 				pstmt.setString(1, "%"+search+"%");
@@ -336,11 +334,10 @@ public class NoticeDAO {
 					dto.setNo_title(rs.getString("No_title"));
 					dto.setNo_content(rs.getString("No_content"));
 					dto.setNo_date(rs.getString("No_date"));
-					
+					System.out.println(dto);
 					searchList.add(dto);
 				
 				}
-				
 				System.out.println(" DAO : 검색결과 저장완료! ");
 				
 			} catch (Exception e) {

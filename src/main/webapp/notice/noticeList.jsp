@@ -13,6 +13,17 @@
 
 <style type="text/css">
 
+.btn-5{
+  backface-visibility: hidden;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  border-color: #7c7c7c;
+  background: linear-gradient(180deg,#e6e6e6 0%,rgba(0, 0, 0, 0.25) 49%, rgba(38, 38, 38, 0.6) 51%,rgba(0, 0, 0, 0.25) 100%);
+  border-radius: 5px;
+}
+
 h1{
   text-align: left; margin-left: 50px; 
 }
@@ -30,8 +41,8 @@ h1{
 }
 
     #mainWrapper{
-        width: 900px;
-        margin: 300px auto; /*가운데 정렬*/
+        width: 1000px;
+        margin: 200px auto; /*가운데 정렬*/
     }
 
      #mainWrapper > ul > li:first-child {
@@ -155,7 +166,7 @@ h1{
 		  	  if(id != null){
 		  	  if(id.equals("admin")){
   	%>
-	       <li><a href="./NoticeUpdateAction.no?No_num=${dto.no_num }&pageNum=${pageNum} " style="text-decoration: none;" >수정</a>
+	       <li><a href="./NoticeUpdateAction.no?No_num=${dto.no_num }&pageNum=${pageNum} " style="text-decoration: none;" id="btn-5">수정</a>
 	          <a href="./NoticeDeleteAction.no?No_num=${dto.no_num }&pageNum=${pageNum}" style="text-decoration: none;" >삭제</a></li>
   	<%
   	 		 	}
@@ -166,10 +177,20 @@ h1{
 	    </c:forEach>
  
   </table>
+  
+  	  <%
+			  String id = (String)session.getAttribute("id");
+
+		  	  if(id != null){
+		  	  if(id.equals("admin")){
+  	%>
 	  <div align="right" class="btngreen">
           <a href="./NoticeWrite.no" class="Btn" value="글쓰기">글쓰기</a>
       </div>
-	
+		<%
+  	 		 	}
+  			  }
+  	%> 
 		
 	<div id="page_control">
 	
@@ -187,13 +208,12 @@ h1{
 	</div>
 	</ul>
 </article>
-<!-- 게시판 -->
-<!-- 본문들어가는 곳 -->
-<div class="clear"></div>
+
 <!-- 푸터들어가는 곳 -->
 <footer>
 <hr>
 
+<jsp:include page="../inc/footer.jsp"/>
 </footer>
 <!-- 푸터들어가는 곳 -->
 

@@ -20,13 +20,13 @@ public class NoticeWriteAction implements Action {
 		
 		// 전달된 정보 저장(파라미터)
 		NoticeDTO dto = new NoticeDTO();
-		dto.setMem_id(request.getParameter("Mem_id"));
+		dto.setMem_id((String)request.getSession().getAttribute("id"));  
 		dto.setNo_content(request.getParameter("No_content"));
 		dto.setNo_title(request.getParameter("No_title"));
 		// BoardDAO - 글쓰기()
 		NoticeDAO dao = new NoticeDAO();
 		dao.insertNotice(dto);
-		
+		System.out.println(dto);
 		// 페이지이동 (list)
 		ActionForward forward = new ActionForward();
 		forward.setPath("./NoticeListAction.no");
