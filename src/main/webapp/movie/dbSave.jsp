@@ -119,14 +119,15 @@
 			<input type="hidden" name="movieCd" value="${boxoffice.movieCd }">
 			<input type="hidden" name="movieNm" value="${boxoffice.movieNm }">
 			<input type="hidden" name="moviePlayDate" value="${boxoffice.openDt }">
-			<input type="text" name="movieSalesShare" value="${boxoffice.showTm }">
 		
 	</c:forEach>
 	
 	</c:if>
+	
+	
 	</table>
 	
-	<input type="submit" value="저장">
+	<input type="submit" value="업데이트">
 	</form>
 	
 	

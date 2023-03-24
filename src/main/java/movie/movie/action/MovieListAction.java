@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import movie.movie.db.MovieDAO;
 import movie.movie.db.MovieDTO;
@@ -31,7 +32,6 @@ public class MovieListAction implements Action {
 		}
 		
 		
-
 		request.setAttribute("dailyList", dailyList);
 		request.setAttribute("imgList", imgList);
 

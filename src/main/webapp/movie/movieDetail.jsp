@@ -66,6 +66,24 @@
 					})
 				}
 			});
+			
+			$(".texta").click(function(){
+				$.ajax({
+					url:'./checkLogin.mv',
+					dataType:'text',
+					success:function(data){
+						if(data=="X"){
+							alert("로그인 이후 사용 가능");
+							location.href='./Login.me';
+							
+						}
+					}
+					
+				});
+			});
+
+			
+			
 		});
 
 
@@ -80,21 +98,8 @@
 </head>
 <body class="author-template">
 <div class="site-wrapper">
-	<nav class="main-nav overlay clearfix">
-	<a class="blog-logo" href="index.html"><img src="assets/img/logo.png" alt="Fashion Critiques"/></a>
-	<ul id="menu">
-		<li class="nav-home nav-current" role="presentation"><a href="index.html">Home</a></li>
-		<li class="nav-article-example" role="presentation"><a href="article.html">Post Example</a></li>
-		<li class="nav-about-us" role="presentation"><a href="about.html">Page Example</a></li>
-		<li class="nav-author-page" role="presentation"><a href="author.html">Author Page</a></li>
-		<span class="socialheader">
-		<a href="#"><span class='symbol'>circletwitterbird</span></a>
-		<a href="#"><span class='symbol'>circlefacebook</span></a>
-		<a href="#"><span class='symbol'>circlegoogleplus</span></a>
-		<a href="mailto:wowthemesnet@gmail.com"><span class='symbol'>circleemail</span></a>
-		</span>
-	</ul>
-	</nav>
+	<jsp:include page="../inc/top.jsp"/>
+	
 	<header class="main-header author-head " style="background-image: url(http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/10/2015/09/30162427/sep2.jpg)">
 	</header>
 	
@@ -143,7 +148,16 @@
 			<h4> 한줄평 및 평점 </h4>
 			
 			<form action="movieReview.mv">
-				한줄평 : <textarea cols="100"></textarea>
+				<input type="hidden" value="${movieCd }" name="M_num">
+				한줄평 : <textarea cols="100" class="texta" name="Review"></textarea>
+				<select name="grade">
+					<option>평점 선택</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
 				<input type="submit" value="등록">
 			</form>
 			

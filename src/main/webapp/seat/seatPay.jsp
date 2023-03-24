@@ -67,21 +67,7 @@
 </head>
 <body class="post-template page-template page">
 <div class="site-wrapper">
-	<nav class="main-nav overlay clearfix">
-	<a class="blog-logo" href="index.html"><img src="assets/img/logo.png" alt="Fashion Critiques"/></a>
-	<ul id="menu">
-		<li class="nav-home nav-current" role="presentation"><a href="index.html">Home</a></li>
-		<li class="nav-article-example" role="presentation"><a href="article.html">Post Example</a></li>
-		<li class="nav-about-us" role="presentation"><a href="about.html">Page Example</a></li>
-		<li class="nav-author-page" role="presentation"><a href="author.html">Author Page</a></li>
-		<span class="socialheader">
-		<a href="#"><span class='symbol'>circletwitterbird</span></a>
-		<a href="#"><span class='symbol'>circlefacebook</span></a>
-		<a href="#"><span class='symbol'>circlegoogleplus</span></a>
-		<a href="mailto:wowthemesnet@gmail.com"><span class='symbol'>circleemail</span></a>
-		</span>
-	</ul>
-	</nav>
+	<jsp:include page="../inc/top.jsp" />
 	<header class="main-header post-head " style="background-image: url(http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/10/2015/10/10174958/fas-compressor.jpg); height:300px">
 	<div class="vertical">
 		<div class="main-header-content inner">
@@ -102,7 +88,7 @@
 		<input type="hidden" value="${Book_num }" name="Book_num">
 		<input type="hidden" value="${M_num }" name="M_num">
 		<input type="hidden" value="${Sc_num }" name="Sc_num">
-		<input type="hidden" value="">
+		<input type="hidden" value="${Mem_num }" name="Mem_num">
 		<input type="hidden" value="${aNum }" name="aNum">
 		<input type="hidden" value="${yNum }" name="yNum">
 		<input type="hidden" value="${tPrice }" name="tPrice">
@@ -118,7 +104,7 @@
 			<tr>
 				<td>${M_name }</td>
 				<td>${Sc_name }</td>
-				<td>회원명</td>
+				<td>${Mem_name }</td>
 				<td>
 					<c:forEach items="${S_num }" var="S_num">
 						<input type="hidden" value="${S_num }" name="S_num">
@@ -137,7 +123,18 @@
 		
 		<h2>할인 정보</h2>
 		<c:set value="${price * yNum * 0.1 }" var="yDiscount"/>
-		<c:set value="${price * 0.1 }" var="gDiscount"/>
+		
+		<c:choose>
+			<c:when test="${Mem_grade eq 'Bronze' }">
+				<c:set value="0" var="gDiscount"/>
+			</c:when>
+			<c:when test="${Mem_grade eq 'Silver' }">
+				<c:set value="${price * 0.1 }" var="gDiscount"/>
+			</c:when>
+			<c:when test="${Mem_grade eq 'Gold' }">
+				<c:set value="${price * 0.2 }" var="gDiscount"/>
+			</c:when>
+		</c:choose>
 		<table>
 			<tr>
 				<td>할인 종류</td>
@@ -148,7 +145,7 @@
 				<td style="text-align: right;">${yDiscount }</td>
 			</tr>
 			<tr>
-				<td>등급 할인</td>
+				<td>등급 할인(${Mem_grade })</td>
 				<td style="text-align: right;">${gDiscount }</td>
 			</tr>
 		</table>
@@ -166,7 +163,7 @@
 			<tr>
 				<td style="text-align: right;">${tPrice }</td>
 				<td style="text-align: right;">${yDiscount + gDiscount }</td>
-				<td style="text-align: right;">${tPrice - (yDiscount + gDistcount) }</td>
+				<td style="text-align: right;">${tPrice - (yDiscount + gDiscount) }</td>
 			</tr>
 		</table>
 		

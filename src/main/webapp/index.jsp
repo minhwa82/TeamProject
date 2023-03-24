@@ -18,7 +18,9 @@
 		//response.sendRedirect("./MemberLogin.me");
 		//response.sendRedirect("./BoardWrite.bo");
 		//response.sendRedirect("./BoardList.bo");
-		response.sendRedirect("./main.mv");
+		//response.sendRedirect("./seatChoice.st");
+		response.sendRedirect("./Main.me");
+		//response.sendRedirect("./Booking.bk");
 		
 	%>
 	

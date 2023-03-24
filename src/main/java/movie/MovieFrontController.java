@@ -86,27 +86,27 @@ public class MovieFrontController extends HttpServlet{
 			}
 			
 		}
-		// 로그인
-		else if (command.equals("/Login.mm")) {
-			System.out.println(" C : /Login.mv 호출! ");
-			
-			// 패턴1
-			forward = new ActionForward();
-			forward.setPath("./movie/loginForm.jsp");
-			forward.setRedirect(false);
-		}
-		else if (command.equals("/LoginAction.mm")) {
-			System.out.println(" C : /LoginAction.mv 호출! ");
-			System.out.println(" C : DB 동작 필요, view 이동  ");
-			
-			// 패턴2
-			action = new LoginAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}	
+//		// 로그인
+//		else if (command.equals("/Login.mm")) {
+//			System.out.println(" C : /Login.mv 호출! ");
+//			
+//			// 패턴1
+//			forward = new ActionForward();
+//			forward.setPath("./movie/loginForm.jsp");
+//			forward.setRedirect(false);
+//		}
+//		else if (command.equals("/LoginAction.mm")) {
+//			System.out.println(" C : /LoginAction.mv 호출! ");
+//			System.out.println(" C : DB 동작 필요, view 이동  ");
+//			
+//			// 패턴2
+//			action = new LoginAction();
+//			try {
+//				forward = action.execute(request, response);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//	}	
 		else if(command.equals("/MovieUpdateAction.mm")) {
 			System.out.println(" C : MovieUpdateAction 호출");
 			
