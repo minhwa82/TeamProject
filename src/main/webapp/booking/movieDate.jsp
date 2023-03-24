@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +15,12 @@
     }
     </style>
 </head>
-	<c:forEach var="dateList" items="${dateList }">
+	
+ 	<c:forEach var="dateList" items="${dateList }">
 		<ul>
 			<li id="startTime">
-			<input type="radio" name="T_date" value="${dateList.t_date }"> ${dateList.t_date }</li>
+			<input type="radio" name="T_date" value="${dateList.t_date }"> ${dateList.t_date }
+			</li>
 		</ul>
 	</c:forEach>
 	</html>

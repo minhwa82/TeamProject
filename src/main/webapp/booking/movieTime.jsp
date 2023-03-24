@@ -17,8 +17,7 @@
 	<c:forEach var="timeList" items="${timeList }">
 		<ul>
 			<li id="startTime">
-			<input type="hidden" value="${timeList.t_num }">
-			<input type="button" name="T_name" value="${timeList.t_startTime }"> ${timeList.t_startTime }</li>
+			<input type="radio" name="T_num" value="${timeList.t_num }"> ${timeList.t_startTime }</li>
 		</ul>
 	</c:forEach>
 	</html>
