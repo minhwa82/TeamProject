@@ -2,16 +2,14 @@ package movie.seat.action;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import movie.movie.db.MovieDAO;
-import movie.movie.db.MovieDTO;
-import movie.seat.db.SeatDAO;
-import movie.seat.db.SeatDTO;
-import project.moive.booking.db.BookingDAO;
+import member.db.MemberDAO;
+import member.db.MemberDTO;
+import project.movie.booking.db.BookingDAO;
 import project.movie.screen.db.ScreenDAO;
 import project.movie.screen.db.ScreenDTO;
 
@@ -20,6 +18,9 @@ public class SeatBookAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println(" M : SeatBookAction_execute() 실행 ");
+		
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
 		
 		String[] S_num = request.getParameterValues("seat");
 		int T_num = Integer.parseInt(request.getParameter("T_num"));
@@ -65,8 +66,16 @@ public class SeatBookAction implements Action {
 		
 		String Book_num = date + booking_num;
 		
-		// Mem_num 추가
+		MemberDTO mdto = new MemberDTO();
+		MemberDAO mdao = new MemberDAO();
+		mdto = mdao.memberInfo(id);
+		String Mem_name = mdto.getMem_name();
+		String Mem_grade = mdto.getMem_grade();
+		int Mem_num = mdto.getMem_num();
 		
+		request.setAttribute("Mem_num", Mem_num);
+		request.setAttribute("Mem_grade", Mem_grade);
+		request.setAttribute("Mem_name", Mem_name);
 		request.setAttribute("Book_num", Book_num);
 		request.setAttribute("M_name", M_name);
 		request.setAttribute("M_num", M_num);
@@ -80,7 +89,6 @@ public class SeatBookAction implements Action {
 		request.setAttribute("price", price);
 
 		
-		// 예매 페이지로 보내기
 		ActionForward forward = new ActionForward();
 		forward.setPath("./seat/seatPay.jsp");
 		forward.setRedirect(false);

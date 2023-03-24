@@ -34,7 +34,8 @@
 </head>
 <body class="author-template">
 <div class="site-wrapper" style="height:100%">
-	<nav class="main-nav overlay clearfix">
+	<jsp:include page="../inc/top.jsp"/>
+	<!-- <nav class="main-nav overlay clearfix">
 	<a class="blog-logo" href="index.html"><img src="./assets/img/logo.png" alt="Fashion Critiques"/></a>
 	<ul id="menu">
 		<li class="nav-home nav-current" role="presentation"><a href="index.html">Home</a></li>
@@ -50,13 +51,15 @@
 		<a href="mailto:wowthemesnet@gmail.com"><span class='symbol'>circleemail</span></a>
 		</span>
 	</ul>
-	</nav>
+	</nav> -->
 	<header class="main-header author-head " style="background-image: url(http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/10/2015/09/30162427/sep2.jpg)">
 	
 	<div class="datetype1">
 	
 		<h2 style="color:white; margin-top:100px"><%=yesterday %> 기준</h2>
 		<h2 style="color:white;">일간 박스오피스</h2>
+		<a href="saveDB.mv">영화 DB저장</a>
+		<a href="timeInsert.mv">영화 상영 등록</a>
 		
 	</div>
 	
@@ -130,7 +133,7 @@
 
 	
 	</main>
-	<!-- <nav class="pagination1" role="navigation">
+<!-- 	<nav class="pagination1" role="navigation">
 	<span class="page-number">Page 1 of 2</span>
 	<a class="older-posts" href="#">Older Posts &rarr;</a>
 	</nav> -->

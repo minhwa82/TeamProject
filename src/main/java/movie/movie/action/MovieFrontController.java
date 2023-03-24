@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import movie.MovieAddAction;
+import movie.MovieWriteAction;
+
 
 @WebServlet("*.mv")
 public class MovieFrontController extends HttpServlet{
@@ -145,9 +148,22 @@ public class MovieFrontController extends HttpServlet{
 			e.printStackTrace();
 		}
 	}
+	else if(command.equals("/checkLogin.mv")) {
+		System.out.println(" /checkLogin.mv 호출 ");
+		
+		action = new CheckLoginAction();
+		
+		try {
+			forward = action.execute(request, response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 	
-	
-	
+
 	
 	System.out.println("\n 2. 가상주소 매핑 - 끝 ");
 	//////////////////////// 2. 가상주소 매핑 /////////////////////////////////

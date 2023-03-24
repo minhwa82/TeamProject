@@ -1,10 +1,12 @@
 package movie.seat.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.JSONArray;
@@ -22,6 +24,18 @@ public class SeatChoiceAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println(" M : SeatChoiceAction_execute() 실행 ");
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		System.out.println(id);
+		
+		ActionForward forward = new ActionForward();
+		if(id == null) {
+			forward.setPath("./Login.me");
+			forward.setRedirect(true);
+			
+			return forward;
+		}
 		
 		String M_num = request.getParameter("M_num");
 		String M_name = request.getParameter("M_name");
@@ -52,21 +66,7 @@ public class SeatChoiceAction implements Action {
 		request.setAttribute("Sc_num", Sc_num);
 		request.setAttribute("M_name", M_name);
 		
-		// JSOnLISt
-//		ObjectMapper mapper = new ObjectMapper();
-//		String jsonList="";
-//
-//		try {
-//			jsonList = mapper.writeValueAsString(SList);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		System.out.println(jsonList);
-//		request.setAttribute("JList", jsonList);
 		
-		
-		ActionForward forward = new ActionForward();
 		forward.setPath("./seat/seat.jsp");
 		forward.setRedirect(false);
 		

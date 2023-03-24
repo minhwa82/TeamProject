@@ -44,7 +44,8 @@ public class ReviewDAO {
 	
 	
 	// movieReviewInsert(int Mem_name, String M_num)
-	public void movieReviewInsert(ReviewDTO dto) {
+	public int movieReviewInsert(ReviewDTO dto) {
+		int result = 0;
 		try {
 			con = getCon();
 			sql = "insert into review (Mem_num, M_num, review, M_grade, review_date) "
@@ -57,7 +58,7 @@ public class ReviewDAO {
 			pstmt.setString(3, dto.getReview());
 			pstmt.setInt(4, dto.getM_grade());
 			
-			pstmt.executeUpdate();
+			result = pstmt.executeUpdate();
 			
 			
 		} catch (Exception e) {
@@ -66,9 +67,9 @@ public class ReviewDAO {
 		} finally {
 			closeDB();
 		}
-		
-		
+		return result;
 	} // movieReviewInsert(int Mem_name, String M_num)
+	
 	
 	
 	// getMovieReview(String M_num)

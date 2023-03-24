@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import movie.movie.db.MovieDAO;
 import movie.seat.db.SeatDAO;
 import movie.seat.db.SeatDTO;
-import project.moive.booking.db.BookingDAO;
+import project.movie.booking.db.BookingDAO;
 
 public class BookAction implements Action {
 
@@ -22,6 +22,7 @@ public class BookAction implements Action {
 		int yNum = Integer.parseInt(request.getParameter("yNum"));
 		int tPrice = Integer.parseInt(request.getParameter("tPrice"));
 		String Book_num = request.getParameter("Book_num");
+		int Mem_num = Integer.parseInt(request.getParameter("Mem_num"));
 		
 		System.out.println(T_num);
 		System.out.println(Sc_num);
@@ -33,10 +34,10 @@ public class BookAction implements Action {
 		
 		SeatDTO dto = new SeatDTO();
 		SeatDAO dao = new SeatDAO();
-		
+
 		BookingDAO bdao = new BookingDAO();
 		// 멤버 번호 추가
-		bdao.booking(T_num, Sc_num, M_num, S_num, aNum, yNum, tPrice, Book_num);
+		bdao.booking(T_num, Sc_num, M_num, S_num, aNum, yNum, tPrice, Book_num, Mem_num);
 		
 		dto.setT_num(T_num);
 		dto.setSc_num(Sc_num);
@@ -47,10 +48,11 @@ public class BookAction implements Action {
 			dao.seatBook(dto);
 		}
 		
+		ActionForward forward = new ActionForward();
+		forward.setPath("/MyTicket.me");
+		forward.setRedirect(false);
 		
-		// 마이페이지로 보내기
-		
-		return null;
+		return forward;
 	}
 
 }
