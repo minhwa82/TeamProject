@@ -3,11 +3,12 @@ package movie;
 import java.util.List;
 
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import API.NaverAPI;
-import API.NaverAPIDTO;
+import movie.movie.action.NaverAPI;
+import movie.movie.db.NaverAPIDTO;
 
 public class MovieDetailAction implements Action {
 

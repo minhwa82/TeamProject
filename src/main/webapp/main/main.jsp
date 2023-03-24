@@ -15,16 +15,8 @@
 	font-size: 20px;
 }
 img{
+	margin-right: 50px;
 	text-align: center;
-}
-#reser{
-	text-align: left;
-	text-decoration: underline;
-	color: black;
-	font-weight: bold;
-}
-#ab{
-	text-align: left;
 }
 
 
@@ -45,10 +37,11 @@ img{
 
 			</div>
 	
-	<input type ="hidden" name="M_num" value="${dto.m_num }">
 	
 	<table>
-	<div>
+	
+<%-- 	<input type ="hidden" name="M_num" value="${dto.m_num }">
+ --%>	<div>
 	<h3>
 		<a href="#none" id="abc" style="text-decoration: none;"> 무비차트 </a>
 		<a href="./movieDetails.mv" id="abc" class="btn-gradient green mini" > 전체보기 </a>
@@ -58,12 +51,15 @@ img{
 	
 			<c:forEach var="dto" items="${movieList }">
 				<a href="./movieDetails?M_num=${dto.m_num }">	
-				<div style="float:left">
-				<img src="./upload/${dto.m_img }" onerror="this.style.display='none';"
-					       width="245px" height="340px" alt=""></a>
-					       <br>
-					 <a href="./movieBooking?M_num=${dto.m_num }" class="btn-gradient red mini" > 예매하기 </a>
-				</div>
+					<div style="float:left">
+						<img src="./upload/${dto.m_img }" onerror="this.style.display='none';"
+						       width="245px" height="340px" alt=""></a>
+						       <br>
+						<a href="#none"  class="btn-gradient yellow mini"  >
+						<span style="color: black;"> 예매율${dto.m_reservationRate }%</span></a>	
+						
+						 <a href="./movieBooking?M_num=${dto.m_num }" class="btn-gradient red mini" > 예매하기 </a>
+					</div>
 	    </c:forEach>
 	    <br>
 	    

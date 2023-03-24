@@ -1,6 +1,7 @@
 package booking.db;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,8 +14,8 @@ import javax.sql.DataSource;
 
 import member.db.MemberDTO;
 import movie.main.db.MovieDTO;
-import screen.db.ScreenDTO;
-import time.db.TimeDTO;
+import movie.movie.db.TimeDTO;
+import project.movie.screen.db.ScreenDTO;
 
 public class BookingDAO {
 	

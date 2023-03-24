@@ -30,7 +30,7 @@
 	<main class="content" role="main">
 	<form action="./MovieWrite.mm" method="post" >	
 
-	<input type ="hidden" name="M_num" value="${dto.M_num }">
+	<input type ="hidden" name="M_num" value="${dto.m_num }">
 	<table id="notice">
 		<tr>
 		    <th class="ttitle">제목</th>
@@ -46,27 +46,27 @@
 		    <th class="ttitle">예매율</th>
 		</tr>
 		
-		<c:forEach var="dto" items="${movieList }">
+		<c:forEach var="mdto" items="${movieList }">
 			<tr>
-				<td class="left">${dto.m_name }</td>
-				<td class="left">${dto.m_type }</td>
-				<td class="left">${dto.m_runTime }</td>
-				<td class="left">${dto.m_director }</td>
-				<td class="left">${dto.m_age }</td>
-				<td class="left">${dto.m_actor }</td>
+				<td class="left">${mdto.m_name }</td>
+				<td class="left">${mdto.m_type }</td>
+				<td class="left">${mdto.m_runTime }</td>
+				<td class="left">${mdto.m_director }</td>
+				<td class="left">${mdto.m_age }</td>
+				<td class="left">${mdto.m_actor }</td>
 				<td class="left">
-				  <img src="./upload/${dto.m_img }" 
+				  <img src="./upload/${mdto.m_img }" 
 				       width="190px" height="200px" >
 				</td>				
-				<td class="left">${dto.m_playDate }</td>
-				<td class="left">${dto.m_explain }</td>
-				<td class="left">${dto.m_grade }</td>
-				<td class="left">${dto.m_reservationRate }</td>
+				<td class="left">${mdto.m_playDate }</td>
+				<td class="left">${mdto.m_explain }</td>
+				<td class="left">${mdto.m_grade }</td>
+				<td class="left">${mdto.m_reservationRate }</td>
 				
-				<td>
-				<a href="./MovieUpdateAction.mm?M_num=${dto.m_num}">수정</a>/
-				<a href="./MovieDelteAction.mm?M_num=${dto.m_num}">삭제</a></td>
-		   
+					<td>
+					 <a href="./MovieUpdateAction.mm?M_num=${mdto.m_num}" class="btn-gradient red mini" > 수정 </a>
+					 <a href="./MovieDelteAction.mm?M_num=${mdto.m_num}" class="btn-gradient red mini" > 삭제 </a>
+				   </td>
 		    </tr>
 	    </c:forEach>
 	    
@@ -76,7 +76,6 @@
 			<input type="submit" value="등록하기">
 		</form>
 	</main>
-		<jsp:include page="../inc/footer.jsp"/>
 
 </div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>

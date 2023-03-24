@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.action.LoginAction;
+
 // Member컨트롤러: 회원정보 관련된 처리만 수행(서블릿)
 @WebServlet("*.mm")
 public class MovieFrontController extends HttpServlet{
@@ -37,7 +39,6 @@ public class MovieFrontController extends HttpServlet{
 		ActionForward forward = null;
 		 
 		 if(command.equals("/Main.mm")) {
-			System.out.println("C : /Main.mv 호출! ");
 			// 패턴 3
 			action = new MovieMainAction();
 			try {
@@ -86,27 +87,27 @@ public class MovieFrontController extends HttpServlet{
 			}
 			
 		}
-//		// 로그인
-//		else if (command.equals("/Login.mm")) {
-//			System.out.println(" C : /Login.mv 호출! ");
-//			
-//			// 패턴1
-//			forward = new ActionForward();
-//			forward.setPath("./movie/loginForm.jsp");
-//			forward.setRedirect(false);
-//		}
-//		else if (command.equals("/LoginAction.mm")) {
-//			System.out.println(" C : /LoginAction.mv 호출! ");
-//			System.out.println(" C : DB 동작 필요, view 이동  ");
-//			
-//			// 패턴2
-//			action = new LoginAction();
-//			try {
-//				forward = action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//	}	
+		// 로그인
+		else if (command.equals("/Login.mm")) {
+			System.out.println(" C : /Login.mv 호출! ");
+			
+			// 패턴1
+			forward = new ActionForward();
+			forward.setPath("./movie/loginForm.jsp");
+			forward.setRedirect(false);
+		}
+		else if (command.equals("/LoginAction.mm")) {
+			System.out.println(" C : /LoginAction.mv 호출! ");
+			System.out.println(" C : DB 동작 필요, view 이동  ");
+			
+			// 패턴2
+			action = (Action) new LoginAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}	
 		else if(command.equals("/MovieUpdateAction.mm")) {
 			System.out.println(" C : MovieUpdateAction 호출");
 			

@@ -106,22 +106,22 @@ public class MovieDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				MovieDTO dto = new MovieDTO();
+				MovieDTO mdto = new MovieDTO();
 				
-				dto.setM_actor(rs.getString("M_actor"));
-				dto.setM_age(rs.getInt("M_age"));
-				dto.setM_director(rs.getString("M_director"));
-				dto.setM_explain(rs.getString("M_explain"));
-				dto.setM_grade(rs.getDouble("M_grade"));
-				dto.setM_img(rs.getString("M_img"));
-				dto.setM_name(rs.getString("M_name"));
-				dto.setM_num(rs.getString("M_num"));
-				dto.setM_playDate(rs.getString("M_playDate"));
-				dto.setM_reservationRate(rs.getDouble("M_reservationRate"));
-				dto.setM_runTime(rs.getString("M_runTime"));
-				dto.setM_type(rs.getString("M_type"));
+				mdto.setM_actor(rs.getString("M_actor"));
+				mdto.setM_age(rs.getInt("M_age"));
+				mdto.setM_director(rs.getString("M_director"));
+				mdto.setM_explain(rs.getString("M_explain"));
+				mdto.setM_grade(rs.getDouble("M_grade"));
+				mdto.setM_img(rs.getString("M_img"));
+				mdto.setM_name(rs.getString("M_name"));
+				mdto.setM_num(rs.getString("M_num"));
+				mdto.setM_playDate(rs.getString("M_playDate"));
+				mdto.setM_reservationRate(rs.getDouble("M_reservationRate"));
+				mdto.setM_runTime(rs.getString("M_runTime"));
+				mdto.setM_type(rs.getString("M_type"));
 				
-				movieList.add(dto);
+				movieList.add(mdto);
 			}
 			System.out.println(" DAO : 조회 성공! ");
 			System.out.println(" DAO : "+movieList.size());
@@ -220,7 +220,7 @@ public class MovieDAO {
 						dto.setMem_id(rs.getString("Mem_id"));
 						dto.setMem_pw(rs.getString("Mem_pw"));
 						dto.setMem_phone(rs.getString("Mem_phone"));
-						dto.setMem_birth(rs.getString("Mem_birth"));
+						dto.setMem_birth(rs.getDate("Mem_birth"));
 						dto.setMem_grade(rs.getString("Mem_grade"));
 						dto.setMem_addr1(rs.getString("Mem_addr1"));
 						dto.setMem_email(rs.getString("Mem_email"));
@@ -258,7 +258,7 @@ public class MovieDAO {
 						dto = new MemberDTO();
 						
 						dto.setMem_addr1(rs.getString("Mem_addr1"));
-						dto.setMem_birth(rs.getString("Mem_birth"));
+						dto.setMem_birth(rs.getDate("Mem_birth"));
 						dto.setMem_email(rs.getString("Mem_email"));
 						dto.setMem_grade(rs.getString("Mem_grade"));
 						dto.setMem_id(rs.getString("Mem_id"));
@@ -338,22 +338,22 @@ public class MovieDAO {
 					
 					rs = pstmt.executeQuery();
 					while(rs.next()) {
-						BookingDTO dto = new BookingDTO();
-						dto.setAdult_num(rs.getInt("Adult_num"));
-						dto.setB_booking_num(rs.getString("B_booking_num"));
-						dto.setB_cancel(rs.getString("B_cancel"));
-						dto.setB_dateTime(rs.getTimestamp("B_dateTime"));
-						dto.setB_num(rs.getString("B_num"));
-						dto.setB_payInfo(rs.getString("B_payInfo"));
-						dto.setB_payment(rs.getString("B_payment"));
-						dto.setM_num(rs.getString("M_num"));
-						dto.setMem_num(rs.getInt("Mem_num"));
-						dto.setSc_num(rs.getString("Sc_num"));
-						dto.setT_num(rs.getString("T_num"));
-						dto.setTotal_price(rs.getInt("Total_price"));
-						dto.setYouth_num(rs.getInt("Youth_num"));
-						dto.setS_num(rs.getString("S_num"));
-						bookingList.add(dto);
+						BookingDTO bdto = new BookingDTO();
+						bdto.setAdult_num(rs.getInt("Adult_num"));
+						bdto.setB_booking_num(rs.getString("B_booking_num"));
+						bdto.setB_cancel(rs.getString("B_cancel"));
+						bdto.setB_dateTime(rs.getTimestamp("B_dateTime"));
+						bdto.setB_num(rs.getInt("B_num"));
+//						bdto.setB_payInfo(rs.getString("B_payInfo"));
+						bdto.setB_payment(rs.getString("B_payment"));
+						bdto.setM_num(rs.getString("M_num"));
+						bdto.setMem_num(rs.getInt("Mem_num"));
+						bdto.setSc_num(rs.getString("Sc_num"));
+						bdto.setT_num(rs.getInt("T_num"));
+						bdto.setTotal_price(rs.getInt("Total_price"));
+						bdto.setYouth_num(rs.getInt("Youth_num"));
+						bdto.setS_num(rs.getString("S_num"));
+						bookingList.add(bdto);
 					}
 							System.out.println("예매목록");
 							
