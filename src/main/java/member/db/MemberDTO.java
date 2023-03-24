@@ -16,6 +16,7 @@ public class MemberDTO {
 	private Date Mem_birth;
 	private String Mem_grade;
 	private String Mem_addr;
+	private String Mem_addr1;
 	private String Mem_email;
 	private String Mem_mType;
 	private Timestamp Mem_joinDate;

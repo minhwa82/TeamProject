@@ -20,5 +20,6 @@ public class BookingDTO {
 	private Timestamp B_dateTime;
 	private String B_payment;
 	private String B_cancel;
+	private String B_payInfo;
 	
 }

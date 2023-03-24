@@ -36,6 +36,7 @@
 		<tr>
 		
 		    <th class="">예약 번호</th>
+		    <th class="">예약 일련번호</th>
 		    <th class="">상영 시간</th>
 		    <th class="">상영관</th>
 		    <th class="">영화 번호</th>
@@ -48,28 +49,27 @@
 		    <th class="">결제 금액</th>
 		    <th class="">결제 정보</th>
 		    <th class="">예약 여부</th>
-		    <th class="">예약 일련번호?</th>
 		    
 		</tr>
 		
-		<c:forEach var="dto" items="${bookingList }">
+		<c:forEach var="bdto" items="${bookingList }">
 
 			<tr>
 			
-				<td class="">${dto.b_num }</td>
-				<td class="">${dto.t_num }</td>
-				<td class="">${dto.sc_num }</td>
-				<td class="">${dto.m_num }</td>
-				<td class="">${dto.mem_num }</td>
-				<td class="">${dto.s_num }</td>
-				<td class="">${dto.total_price }</td>
-				<td class="">${dto.youth_num }</td>
-				<td class="">${dto.adult_num }</td>
-				<td class="">${dto.b_dateTime }</td>
-				<td class="">${dto.b_payment }</td>
-				<td class="">${dto.b_payInfo }</td>
-				<td class="">${dto.b_cancel }</td>
-				<td class="">${dto.b_booking_num }</td>
+				<td class="">${bdto.b_num }</td>
+				<td class="">${bdto.b_booking_num }</td>
+				<td class="">${bdto.t_num }</td>
+				<td class="">${bdto.sc_num }</td>
+				<td class="">${bdto.m_num }</td>
+				<td class="">${bdto.mem_num }</td>
+				<td class="">${bdto.s_num }</td>
+				<td class="">${bdto.total_price }</td>
+				<td class="">${bdto.youth_num }</td>
+				<td class="">${bdto.adult_num }</td>
+				<td class="">${bdto.b_dateTime }</td>
+				<td class="">${bdbto.b_payment }</td>
+				<td class="">${bdbto.b_payInfo }</td>
+				<td class="">${bdto.b_cancel }</td>
 				
 				<td><a href="#none">수정</a>
 				<a href="#none">삭제</a></td>

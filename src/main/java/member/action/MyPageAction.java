@@ -1,6 +1,7 @@
 package member.action;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,8 +13,6 @@ import booking.db.BookingDTO;
 import member.db.MemberDAO;
 import member.db.MemberDTO;
 import movie.main.db.MovieDTO;
-import screen.db.ScreenDTO;
-import time.db.TimeDTO;
 
 public class MyPageAction implements Action {
 
