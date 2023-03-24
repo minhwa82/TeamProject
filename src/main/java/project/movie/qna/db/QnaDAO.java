@@ -75,14 +75,15 @@ public class QnaDAO {
 			System.out.println(" Q_num : " + Q_num);
 
 			// 3. SQL 작성(insert) & pstmt 객체
-			sql = "insert into qna (Q_num,Mem_subject,Mem_content,Q_date)"
-					+ "values(?,?,?,now())";
+			sql = "insert into qna (Q_num,Mem_id,Mem_subject,Mem_content,Q_date)"
+					+ "values(?,?,?,?,now())";
 			pstmt = con.prepareStatement(sql);
 
 			
 			pstmt.setInt(1, Q_num);
-			pstmt.setString(2, dto.getMem_subject());
-			pstmt.setString(3, dto.getMem_content());
+			pstmt.setString(2, dto.getMem_id());
+			pstmt.setString(3, dto.getMem_subject());
+			pstmt.setString(4, dto.getMem_content());
 			
 			pstmt.executeUpdate();
 			

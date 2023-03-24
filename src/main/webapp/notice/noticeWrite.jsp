@@ -50,10 +50,10 @@ Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">Bootstr
 	<!-- Form -->
 	
 	<form action="./NoticeWriteAction.no" method="post">
-
+<input type="hidden" name="Mem_id" >
 <table class="question">
     <caption class="qtit"><h2>공지사항</h2></caption>
-     <!--     <tr>
+     <!-- <!--     <tr>
             <th class="th" scope="row">극장선택</th>
             <td><select class="wid10" title="카테고리 선택">
                 <option value="극장선택">극장선택</option>
@@ -62,8 +62,8 @@ Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">Bootstr
                 <option value="대구">대구</option>
                 <option value="부산">부산</option>
             </select>
-        </tr>-->
-        <tr>
+        </tr>
+      --> -->   <tr>
             <th class="th" scope="row">제목</th>
             <td><input type="text" title="제목" class="wid20"  name="No_title" />
             </td>

@@ -21,7 +21,7 @@ public class QnaWriteAction implements Action {
 			
 			// 전달된 정보 저장(파라미터)
 			QnaDTO dto = new QnaDTO();
-	//		dto.setMem_id(request.getParameter("Mem_id"));
+			dto.setMem_id((String)request.getSession().getAttribute("id"));
 			dto.setMem_content(request.getParameter("Mem_content"));
 			dto.setMem_subject(request.getParameter("Mem_subject"));
 
