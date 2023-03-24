@@ -64,6 +64,21 @@ public class BookingFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (command.equals("/MyTicket.bk")) {
+			System.out.println(" C : /MyTicket.bk 호출 ");
+
+			action = new MyTicketAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else if (command.equals("/MyTicketList.bk")) {
+			System.out.println(" C : //MyTicketList.bk 호출! ");
+
+			action = new MyTicketListAction();
+
 		}
 
 		System.out.println("\n 2. 가상주소 매핑 - 끝 ");

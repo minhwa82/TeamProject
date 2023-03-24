@@ -6,9 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import movie.movie.db.MovieDAO;
-import project.movie.booking.db.BookingDAO;
-import project.movie.screen.db.ScreenDAO;
+import project.moive.booking.db.BookingDAO;
 
 public class ScreenChoiceAction implements Action {
 
@@ -21,10 +19,10 @@ public class ScreenChoiceAction implements Action {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 //		Time startTime = movieDAO.getStartTime(M_num);
-		List dateList = dao.getTime(M_num, Sc_num);
+		List dateList = dao.getMovieDate(M_num, Sc_num);
 //		for (int i = 0; i < timeList.size(); i++) {
 //			out.write(((TimeDTO)timeList.get(i)).getT_startTime() + "");
-//			System.out.println(" startTime : " + ((TimeDTO)timeList.get(i)).getT_startTime());
+//			System.out.println(" startTime : " + ((TimeDTO)timeList.get(i)).getT_startTime()); 
 //			System.out.println(" sc_num : "+((TimeDTO) timeList.get(i)).getSc_num());
 //		}
 //		out.write(timeList)

@@ -6,9 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import movie.movie.db.MovieDAO;
-import project.movie.booking.db.BookingDAO;
-import project.movie.screen.db.ScreenDAO;
+import project.moive.booking.db.BookingDAO;
 
 public class MovieChoiceAction implements Action {
 
@@ -24,7 +22,7 @@ public class MovieChoiceAction implements Action {
 		List screenList =  dao.getScreen(M_num);
 //		System.out.println(timeList);
 //		request.setAttribute("timeList", timeList);
-		System.out.println(screenList);
+		System.out.println(screenList); 
 		request.setAttribute("screenList", screenList);
 		ActionForward forward = new ActionForward();
 		forward.setPath("./booking/choiceMovie.jsp");

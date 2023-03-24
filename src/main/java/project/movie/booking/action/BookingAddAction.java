@@ -3,7 +3,7 @@ package project.movie.booking.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import project.movie.booking.db.BookingDTO;
+import project.moive.booking.db.BookingDTO;
 
 public class BookingAddAction implements Action{
 
